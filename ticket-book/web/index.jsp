@@ -14,9 +14,7 @@
         <title>JSP Page</title>
         <link href="front-end/css/bootstrap.css" rel="stylesheet">
         <link href="front-end/css/style.css" rel="stylesheet">
-        <link rel='stylesheet' id='prettyphoto-css'  href="front-end/css/prettyPhoto.css" type='text/css' media='all'>
-        <link href="front-end/css/fontello.css" type="text/css" rel="stylesheet">
-        
+        <link href="front-end/css/fontello.css" type="text/css" rel="stylesheet"
         <style>
             body {
                 padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -30,12 +28,6 @@
         <script type="text/javascript" src="front-end/js/jquery.scrollTo-1.4.2-min.js"></script>
         <!-- Load LocalScroll -->
         <script type="text/javascript" src="front-end/js/jquery.localscroll-1.2.7-min.js"></script>
-        <!-- prettyPhoto Initialization -->
-        <script type="text/javascript" charset="utf-8">
-            $(document).ready(function(){
-                $("a[rel^='prettyPhoto']").prettyPhoto();
-            });
-        </script>
     </head>
     <body>
         <div class="navbar-wrapper">
@@ -91,23 +83,22 @@
             </header>
         </div>
         <div class="scrollblock">
-      <section id="feature">
-        <div class="container">
-          <div class="row">
-            <div class="span12">
-              <article>
-                  <button class="btn btn-primary"></button>
-                <p>We work to make web a beautiful place.</p>
-                <p>We craft beautiful designs and convert them into</p>
-                <p>fully functional and user-friendy web app.</p>
-              </article>
-            </div>
-            <!-- ./span12 -->
-          </div>
-          <!-- .row -->
+            <section id="feature">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <article>
+                                <p>We work to make web a beautiful place.</p>
+                                <p>We craft beautiful designs and convert them into</p>
+                                <p>fully functional and user-friendy web app.</p>
+                            </article>
+                        </div>
+                        <!-- ./span12 -->
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!-- ./container -->
+            </section>
         </div>
-        <!-- ./container -->
-      </section>
-    </div>
     </body>
 </html>
