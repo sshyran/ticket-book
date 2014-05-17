@@ -4,8 +4,10 @@
  */
 package Controller;
 
+import Bean.SearchBean;
+import DAL.Trip;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,32 +19,19 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class SearchServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SearchServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SearchServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {            
-            out.close();
+        String departDate = request.getParameter("txtDate");
+        String depatureS = request.getParameter("txtDeparture");
+        String terminateS = request.getParameter("txtTerminate");
+        int departID = Integer.parseInt(depatureS);
+        int terminID = Integer.parseInt(terminateS);
+        SearchBean bean = new SearchBean();
+        List<Trip> trips = bean.searchBook(departDate, departID, terminID);
+        if(trips.size() > 1){
+            System.out.println("yeahh");
+        }else{
+            System.out.println("ohnoooo");
         }
     }
 
