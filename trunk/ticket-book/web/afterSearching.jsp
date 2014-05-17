@@ -1,8 +1,9 @@
 <%-- 
-    Document   : index
-    Created on : May 15, 2014, 9:41:09 PM
-    Author     : bc
+    Document   : afterSearching
+    Created on : May 17, 2014, 11:50:47 PM
+    Author     : Jessie
 --%>
+
 <%@page import="DAL.DAO"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
