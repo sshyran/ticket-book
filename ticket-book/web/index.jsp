@@ -15,6 +15,14 @@
         <link href="front-end/css/bootstrap.css" rel="stylesheet">
         <link href="front-end/css/style.css" rel="stylesheet">
         <link href="front-end/css/fontello.css" type="text/css" rel="stylesheet"
+              <link href="${pageContext.request.contextPath}/cssPhuongDN/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <script type="${pageContext.request.contextPath}/cssPhuongDN/jquery.min.js"></script>
+        <script type="${pageContext.request.contextPath}/cssPhuongDN/bootstrap.min.js"></script>
+        <script type="${pageContext.request.contextPath}/cssPhuongDN/bootstrap-datetimepicker.min.js"></script>
+        <script type="${pageContext.request.contextPath}/cssPhuongDN/bootstrap-datetimepicker.pt-BR.js"></script>
+        <script type="${pageContext.request.contextPath}/cssPhuongDN/index.js"></script>
+        <script type="${pageContext.request.contextPath}/cssPhuongDN/layout.css"></script>
+        <script type="${pageContext.request.contextPath}/cssPhuongDN/respond.min.js"></script>
         <style>
             body {
                 padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -36,15 +44,11 @@
                     <div class="container">
                         <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
                         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
-                        <h1 class="brand"><a href="#top">Legend!</a></h1>
+                        <h1 class="brand"><a href="#top">Bus ticket booker</a></h1>
                         <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
-                                <li><a title="portfolio" href="#portfolio">Portfolio</a></li>
-                                <li><a title="services" href="#services">Services</a></li>
-                                <li><a title="news" href="#news">News</a></li>
-                                <li><a title="team" href="#team">Team</a></li>
-                                <li><a title="contact" href="#contact">Contact</a></li>
+                                <li><a title="contact" href="#contact">Admin login</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -58,24 +62,50 @@
         <div id="top"></div>
         <!-- ******************** HeaderWrap ********************-->
         <div id="headerwrap">
-            <header class="clearfix">
-                <h1><span>Legend!</span> We make web a beautiful place.</h1>
+            
+                
                 <div class="container">
+                    
                     <div class="row">
                         <div class="span12">
-                            <h2>Signup for our Newsletter to be updated</h2>
-                            <input type="text" name="your-email" placeholder="you@yourmail.com" class="cform-text" size="40" title="your email">
-                            <input type="submit" value="Notify me" class="cform-submit">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h2>Đi từ: </h2>
+                                    </td>
+                                    <td><select class="selectpicker">
+                                            <option>1</option>
+                                            <option>2</option>
+                                        </select></td>
+                                </tr>
+                                <tr>
+                                    <td><h2>Đến: </h2></td>
+                                    <td><select class="selectpicker">
+                                            <option>1</option>
+                                            <option>2</option>
+                                        </select></td>
+                                </tr>
+                                <tr>
+                                    <td><h2>Ngày: </h2></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="submit" value="Tìm" class="cform-submit"></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="span12">
                             <ul class="icon">
-                                <li><a href="#" target="_blank"><i class="icon-pinterest-circled"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="icon-facebook-circled"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="icon-twitter-circled"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="icon-gplus-circled"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="icon-skype-circled"></i></a></li>
+                                <li><a href="#"><i class="icon-pinterest-circled"></i></a></li>
+                                <li><a href="#"><i class="icon-facebook-circled"></i></a></li>
+                                <li><a href="#"><i class="icon-twitter-circled"></i></a></li>
+                                <li><a href="#"><i class="icon-gplus-circled"></i></a></li>
+                                <li><a href="#"><i class="icon-skype-circled"></i></a></li>
                             </ul>
                         </div>
                     </div>
