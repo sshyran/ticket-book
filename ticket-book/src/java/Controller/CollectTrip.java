@@ -65,20 +65,6 @@ public class CollectTrip extends HttpServlet {
                 String tem = rs.getString("To");
                 Trip trip = new Trip(id, dTime, tTime, price, tSeat, aSeat, rId, dep, tem);
                 array.add(trip);
-                // <editor-fold defaultstate="collapsed" desc="see all trip">
-                /**
-                 * out.print(trip.getId()+"|");
-                out.print(trip.getDepTime()+"|");
-                out.print(trip.getTerTime()+"|");
-                out.print(trip.getPrice()+"|");
-                out.print(trip.getTotalSeat()+"|");
-                out.print(trip.getAvailableSeat()+"|");
-                out.print(trip.getRouteId()+"|");
-                out.print(trip.getDeparture()+"|");
-                out.print(trip.getTerminate()+"|");
-                out.print("<br/>");
-                 */
-                // </editor-fold>
             }
             request.setAttribute("tripList", array);
             RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
