@@ -4,10 +4,12 @@
  */
 package DAL;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jessie
  */
-public class AdminAccount {
+public class AdminAccount implements Serializable{
     
 }

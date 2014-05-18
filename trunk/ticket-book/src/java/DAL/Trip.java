@@ -4,13 +4,14 @@
  */
 package DAL;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  *
  * @author Jessie
  */
-public class Trip {
+public class Trip implements Serializable{
 
     private int id;
     private String depTime;

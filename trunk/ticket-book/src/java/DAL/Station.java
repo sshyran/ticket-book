@@ -4,11 +4,13 @@
  */
 package DAL;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jessie
  */
-public class Station {
+public class Station implements Serializable{
     private int id;
     private String sname;
     private String address;
