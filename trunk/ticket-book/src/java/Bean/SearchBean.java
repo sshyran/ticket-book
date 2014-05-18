@@ -5,6 +5,7 @@
 package Bean;
 
 import DAL.DAO;
+import DAL.Station;
 import DAL.Trip;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -38,13 +39,14 @@ public class SearchBean implements Serializable {
             pstmt.setInt(3, terminate);
             rs = pstmt.executeQuery();
             while (rs.next()) {
+                int routeId = rs.getInt("id");
                 int id = rs.getInt("id");
                 String depTime = rs.getString("departTime");
                 String terTime = rs.getString("terminTime");
                 float price = rs.getFloat("price");
                 int totalSeats = rs.getInt("totalSeats");
                 int availableSeat = rs.getInt("availableSeat");
-                Trip trip = new Trip(id, depTime, terTime, price, totalSeats, availableSeat);
+                Trip trip = new Trip(routeId, depTime, terTime, price, totalSeats, availableSeat, id);
                 trips.add(trip);
             }
         } catch (Exception e) {
@@ -66,5 +68,56 @@ public class SearchBean implements Serializable {
             }
         }
         return trips;
+    }
+
+    public Station searchStation(int placeID, String typeS) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Station station = null;
+        try {
+            conn = DAO.makeConnection();
+            String sql = "";
+            if(typeS.equals("departure")){
+                sql = "SELECT r.id, r.departure, s.province, s.sname, s.[address] "
+                    + "FROM [Route] r "
+                    + "JOIN Station s "
+                    + "ON s.id = r.departure "
+                    + "WHERE r.id=? ";
+            }else if(typeS.equals("terminate")){
+                sql = "SELECT r.id, r.departure, s.province, s.sname, s.[address] "
+                    + "FROM [Route] r "
+                    + "JOIN Station s "
+                    + "ON s.id = r.terminate "
+                    + "WHERE r.id=? ";
+            }
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, placeID);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                String sname = rs.getString("sname");
+                String address = rs.getString("address");
+                String province = rs.getString("province");
+                station = new Station(sname, address, province);
+            }
+        } catch (Exception e) {
+            System.out.println("Error 1: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error 2: " + e.getMessage());
+            }
+        }
+        return station;
     }
 }
