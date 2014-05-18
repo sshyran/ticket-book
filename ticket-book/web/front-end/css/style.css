@@ -38,7 +38,7 @@ div, article, section, header, footer, nav, li {
 }
 body {
 	background:#f0f0f0;
-	color: #312A1E;
+	color: #F3D605;
 	font-size: 100%;
 	font-family: 'Quattrocento', serif;
 }
@@ -300,14 +300,14 @@ ul#menu-main > li > a:hover {
 	-webkit-transition: background 0.25 ease-in;
 }
 #headerwrap input[type=text] {
-	height: 2.9em;
-	width:50%;
+	height: 30px;
+	width:100%;
 }
 #headerwrap input[type=submit] {
 	font-family: 'Patua One', cursive;
 	color: #fff;
 	width: 185px;
-	height: 2.9em;
+	height: 40px;
 	font-size: 1.3125em; /* 21px */
 	padding:0.5em;
 	letter-spacing: 0.05em;
@@ -318,6 +318,7 @@ ul#menu-main > li > a:hover {
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
+        text-align: center;
 }
 #headerwrap input[type=submit]:hover, #headerwrap input[type=submit]:active {
 	background: #43413e !important;
@@ -1066,6 +1067,9 @@ footer p {
 }
  #intro-caption {
  font-size: 4em;
+}
+#ul_top_hypers li{
+    display: inline;
 }
 }
 	

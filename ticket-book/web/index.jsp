@@ -46,7 +46,7 @@
                     <div class="container">
                         <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
                         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
-                        <h1 class="brand"><a href="#top">Bus ticket booker</a></h1>
+                        <h1 class="brand"><a href="#top">BUS TICKET BOOKER</a></h1>
                         <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
@@ -67,41 +67,44 @@
             <div class="container">
                 <div class="row">
                     <div class="span12">
-                        <form action="SearchServlet">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <h2>Departure: </h2>
-                                    </td>
-                                    <td>
-                                        <select class="selectpicker" name="txtDeparture">
-                                            <c:forEach var="stations" items="${requestScope.stations}">
-                                                <option value="${stations.id}">${stations.province}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><h2>Termination: </h2></td>
-                                    <td>
-                                        <select class="selectpicker" name="txtTerminate">
-                                            <c:forEach var="stations" items="${requestScope.stations}">
-                                                <option value="${stations.id}">${stations.province}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><h2>Date: </h2></td>
-                                    <td>
-                                        <input type="text" name="txtDate"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="submit" value="Search" name="btAction" /></td>
-                                </tr>
-                            </table>
-                        </form>
+                        <center>
+                            <form action="SearchServlet">
+                                <table border="none">
+                                    <tr>
+                                        <td>
+                                            <h2>Departure</h2>
+                                        </td>
+                                        <td>
+                                            <select class="selectpicker" name="txtDeparture">
+                                                <c:forEach var="stations" items="${sessionScope.stations}">
+                                                    <option value="${stations.id}">${stations.province}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><h2>Termination</h2></td>
+                                        <td>
+                                            <select class="selectpicker" name="txtTerminate">
+                                                <c:forEach var="stations" items="${sessionScope.stations}">
+                                                    <option value="${stations.id}">${stations.province}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><h2>Date</h2></td>
+                                        <td>
+                                            <input type="text" name="txtDate" placeholder="dd-mm-yyyy"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><input type="submit" value="Search" name="btAction" /></td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </center>
                     </div>
                 </div>
                 <div class="row">

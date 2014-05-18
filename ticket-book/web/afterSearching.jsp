@@ -65,42 +65,72 @@
         <div id="top"></div>
         <!-- ******************** HeaderWrap ********************-->
         <div id="headerwrap">
+            <div>
+                <form action="SearchServlet">
+                    <ul id="ul_top_hypers">
+                        <li><h2>Search</h2></li>
+                        <li>Departure :</li>
+                        <li>
+                            <select class="selectpicker" name="txtDeparture">
+                                <c:forEach var="stations" items="${sessionScope.stations}">
+                                    <option value="${stations.id}">${stations.province}</option>
+                                </c:forEach>
+                            </select>
+                        </li>
+                        <li>Terminate :</li>
+                        <li>
+                            <select class="selectpicker" name="txtTerminate">
+                                <c:forEach var="stations" items="${sessionScope.stations}">
+                                    <option value="${stations.id}">${stations.province}</option>
+                                </c:forEach>
+                            </select>
+                        </li>
+                        <li>Date :</li>
+                        <li>
+                            <input type="text" name="txtDate" placeholder="dd-mm-yyyy"/>
+                        </li>
+                        <li>
+                            <input type="submit" value="Search" name="btAction" />
+                        </li>
+                    </ul>
+                </form>
+            </div>
+
             <div class="container">
                 <div class="row">
                     <div class="span12">
                         <form action="SearchServlet">
-                            <table>
+                            <table class="table table-bordered table-hover tablesorter">
                                 <tr>
-                                    <td>
-                                        <h2>Departure: </h2>
-                                    </td>
-                                    <td>
-                                        <select class="selectpicker" name="txtDeparture">
-                                            <c:forEach var="stations" items="${requestScope.stations}">
-                                                <option value="${stations.id}">${stations.province}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </td>
+                                    <th class="header">No.</th>
+                                    <th class="header">Trip</th>
+                                    <th class="header">Departure Station</th>
+                                    <th class="header">Terminate Station</th>
+                                    <th class="header">Departure time</th>
+                                    <th class="header">Termination time</th>
+                                    <th class="header">Available seat</th>
+                                    <th class="header">Price</th>
+                                    <th class="header">Book ticket</th>
                                 </tr>
-                                <tr>
-                                    <td><h2>Termination: </h2></td>
-                                    <td>
-                                        <select class="selectpicker" name="txtTerminate">
-                                            <c:forEach var="stations" items="${requestScope.stations}">
-                                                <option value="${stations.id}">${stations.province}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><h2>Date: </h2></td>
-                                    <td>
-                                        <input type="text" name="txtDate"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="submit" value="Search" name="btAction" /></td>
-                                </tr>
+                                <c:set var="depS" value="${requestScope.depS}" />
+                                <c:set var="terS" value="${requestScope.terS}" />
+                                <c:forEach var="trip" items="${requestScope.trips}" varStatus="counter">
+                                    <tr class="active">
+                                    <form action="">
+                                        <td>${counter.count}</td>
+                                        <td>${depS.province} - ${terS.province}</td>
+                                        <td>${depS.sname} - ${depS.address}</td>
+                                        <td>${terS.sname} - ${terS.address}</td>
+                                        <td>${trip.depTime}</td>
+                                        <td>${trip.terTime}</td>
+                                        <td>${trip.availableSeat}</td>
+                                        <td>${trip.price}</td>
+                                        <td>
+                                            <input type="submit" value="Book" name="btAction" />
+                                        </td>
+                                    </form>
+                                    </tr>
+                                </c:forEach>
                             </table>
                         </form>
                     </div>
