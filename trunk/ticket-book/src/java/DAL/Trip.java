@@ -128,4 +128,13 @@ public class Trip {
     public Trip() {
     }
 
+    public Trip(int routeID, String depTime, String terTime, float price, int totalSeat, int availableSeat, int id) {
+        this.id = id;
+        this.depTime = depTime;
+        this.terTime = terTime;
+        this.price = price;
+        this.totalSeat = totalSeat;
+        this.availableSeat = availableSeat;
+        this.routeId = routeID;
+    }
 }
