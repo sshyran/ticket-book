@@ -20,6 +20,14 @@
         <servlet-name>WelcomeServlet</servlet-name>
         <servlet-class>Controller.WelcomeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CollectTrip</servlet-name>
+        <servlet-class>Controller.CollectTrip</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>tripServlet</servlet-name>
+        <servlet-class>Controller.tripServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>WelcomeServlet</servlet-name>
         <url-pattern>/WelcomeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CollectTrip</servlet-name>
+        <url-pattern>/CollectTrip</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>tripServlet</servlet-name>
+        <url-pattern>/tripServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
