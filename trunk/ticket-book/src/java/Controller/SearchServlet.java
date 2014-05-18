@@ -30,20 +30,19 @@ public class SearchServlet extends HttpServlet {
         int terminID = Integer.parseInt(terminateS);
         SearchBean bean = new SearchBean();
         List<Trip> trips = bean.searchBook(departDate, departID, terminID);
-        int routeID = trips.get(0).getRouteId();
-        Station depStation = bean.searchStation(routeID, "departure");
-        Station terStation = bean.searchStation(routeID, "terminate");
-        request.setAttribute("trips", trips);
-        request.setAttribute("depS", depStation);
-        request.setAttribute("terS", terStation);
-        String url = "afterSearching.jsp";
+        if (trips.size() > 0) {
+            int routeID = trips.get(0).getRouteId();
+            Station depStation = bean.searchStation(routeID, "departure");
+            Station terStation = bean.searchStation(routeID, "terminate");
+            request.setAttribute("trips", trips);
+            request.setAttribute("depS", depStation);
+            request.setAttribute("terS", terStation);
+        }else{
+            request.setAttribute("check", "check");
+        }
+        String url = "afterSearching.jsp?txtDeparture=" + depatureS + "&txtTerminate=" + terminateS;
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
-//        if(trips.size() > 1){
-//            System.out.println("yeahh");
-//        }else{
-//            System.out.println("ohnoooo");
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
