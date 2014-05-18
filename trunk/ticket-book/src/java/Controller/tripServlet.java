@@ -145,6 +145,25 @@ public class tripServlet extends HttpServlet {
                 }
                 // </editor-fold>
             }
+            if (action.equals("add")) {
+
+                try {
+                    String newDTime = request.getParameter("dTime");
+                    String newTTime = request.getParameter("tTime");
+                    float newPrice = Float.parseFloat(request.getParameter("price"));
+                    int newTotalSeat = Integer.parseInt(request.getParameter("tSeat"));
+                    int newAvailableSeat = Integer.parseInt(request.getParameter("aSeat"));
+                    int newRouteID = Integer.parseInt(request.getParameter("routeId"));
+                    cn = DriverManager.getConnection(new DAO().getConnectionString());
+                    stmt = cn.createStatement();
+                    query = "insert into Trip(departTime,terminTime,price,totalSeats,availableSeat,routeId,isShow) values ("
+                            + "'" + newDTime + "','" + newTTime + "'," + newPrice + ","
+                            + newTotalSeat + "," + newAvailableSeat + "," + newRouteID + ",1);";
+                    stmt.executeUpdate(query);
+                } catch (Exception e) {
+                }
+                response.sendRedirect("CollectTrip");
+            }
         } finally {
             out.close();
         }
