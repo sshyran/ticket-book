@@ -5,9 +5,11 @@
 package Controller;
 
 import Bean.SearchBean;
+import DAL.Station;
 import DAL.Trip;
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,11 +30,20 @@ public class SearchServlet extends HttpServlet {
         int terminID = Integer.parseInt(terminateS);
         SearchBean bean = new SearchBean();
         List<Trip> trips = bean.searchBook(departDate, departID, terminID);
-        if(trips.size() > 1){
-            System.out.println("yeahh");
-        }else{
-            System.out.println("ohnoooo");
-        }
+        int routeID = trips.get(0).getRouteId();
+        Station depStation = bean.searchStation(routeID, "departure");
+        Station terStation = bean.searchStation(routeID, "terminate");
+        request.setAttribute("trips", trips);
+        request.setAttribute("depS", depStation);
+        request.setAttribute("terS", terStation);
+        String url = "afterSearching.jsp";
+        RequestDispatcher rd = request.getRequestDispatcher(url);
+        rd.forward(request, response);
+//        if(trips.size() > 1){
+//            System.out.println("yeahh");
+//        }else{
+//            System.out.println("ohnoooo");
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

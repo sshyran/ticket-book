@@ -53,6 +53,10 @@ public class Station {
         this.province = province;
     }
     
-    
+    public Station(String sname, String address, String province) {
+        this.sname = sname;
+        this.address = address;
+        this.province = province;
+    }
     
 }

@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,7 +35,8 @@ public class WelcomeServlet extends HttpServlet {
         WelcomeBean bean = new WelcomeBean();
         List<Station> stations = bean.showForSearch();
         // create an attribute to request object
-        request.setAttribute("stations", stations);
+        HttpSession session = request.getSession();
+        session.setAttribute("stations", stations);
         // forward
         request.getRequestDispatcher("index.jsp").forward(request, response);
 

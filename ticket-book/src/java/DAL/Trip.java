@@ -78,17 +78,32 @@ public class Trip {
         this.terminate = terminate;
     }
 
-    public Trip(int id, String depTime, String terTime, float price, int totalSeat,
-            int availableSeat, int routeId, String departure, String terminate) {
+    public String getDepTime() {
+        return depTime;
+    }
+
+    public void setDepTime(String depTime) {
+        this.depTime = depTime;
+    }
+
+    public String getTerTime() {
+        return terTime;
+    }
+
+    public void setTerTime(String terTime) {
+        this.terTime = terTime;
+    }
+    
+
+    public Trip(int routeId, String depTime, String terTime, float price, int totalSeat,
+            int availableSeat,int id) {
         this.id = id;
         this.depTime = depTime;
         this.terTime = terTime;
         this.price = price;
         this.totalSeat = totalSeat;
-        this.availableSeat = availableSeat;
+        this.availableSeat = availableSeat;        
         this.routeId = routeId;
-        this.departure = departure;
-        this.terminate = terminate;
     }
 
     public Trip(int id, String depTime, String terTime, float price, int totalSeat, int availableSeat) {
