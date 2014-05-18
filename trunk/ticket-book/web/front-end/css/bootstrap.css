@@ -160,7 +160,7 @@ h2,  h3 {
 body {
 	margin: 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
+	font-size: 18px;
 	line-height: 20px;
 	color: #333333;
 	background-color: #ffffff;
@@ -1351,6 +1351,8 @@ table {
 	background-color: transparent;
 	border-collapse: collapse;
 	border-spacing: 0;
+        text-align: center;
+  
 }
 .table {
 	width: 100%;
@@ -1359,7 +1361,7 @@ table {
 .table th, .table td {
 	padding: 8px;
 	line-height: 20px;
-	text-align: left;
+	text-align: center;
 	vertical-align: top;
 	border-top: 1px solid #dddddd;
 }
