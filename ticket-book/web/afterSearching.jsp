@@ -99,7 +99,6 @@
             <div class="container">
                 <div class="row">
                     <div class="span12">
-                        <form action="SearchServlet">
                             <table class="table table-bordered table-hover tablesorter">
                                 <tr>
                                     <th class="header">No.</th>
@@ -124,7 +123,7 @@
                                 <c:set var="terS" value="${requestScope.terS}" />
                                 <c:forEach var="trip" items="${requestScope.trips}" varStatus="counter">
                                     <tr class="active">
-                                    <form action="">
+                                    <form action="BookingServlet">
                                         <td>${counter.count}</td>
                                         <td>${depS.province} - ${terS.province}</td>
                                         <td>${depS.sname} - ${depS.address}</td>
@@ -134,13 +133,16 @@
                                         <td>${trip.availableSeat}</td>
                                         <td>${trip.price}</td>
                                         <td>
-                                            <input type="submit" value="Book" name="btAction" />
+                                            
+                                            <input type="hidden" name="price" value="${trip.price}"/>
+                                            <input type="hidden" name="availableSeat" value="${trip.availableSeat}"/>
+                                            <input type="hidden" name="tripID" value="${trip.id}"/>
+                                            <input type="submit" value="Book" name="action" />
                                         </td>
                                     </form>
                                     </tr>
                                 </c:forEach>
                             </table>
-                        </form>
                     </div>
                 </div>
                 <div class="row">
