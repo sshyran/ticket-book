@@ -14,7 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Homepage</title>
+        <title>Search trips</title>
         <link href="front-end/css/bootstrap.css" rel="stylesheet">
         <link href="front-end/css/style.css" rel="stylesheet">
         <link href="front-end/css/fontello.css" type="text/css" rel="stylesheet"
@@ -47,10 +47,11 @@
                     <div class="container">
                         <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
                         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
-                        <h1 class="brand"><a href="#top">Bus ticket booker</a></h1>
+                        <h1 class="brand"><a href="#top">BUS TICKET BOOKER</a></h1>
                         <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
+                                <li><a title="contact" href="WelcomeServlet">Home</a></li>
                                 <li><a title="contact" href="#contact">Admin login</a></li>
                             </ul>
                         </nav>
@@ -65,10 +66,9 @@
         <div id="top"></div>
         <!-- ******************** HeaderWrap ********************-->
         <div id="headerwrap">
-            <div>
+            <div class="paddingSearch">
                 <form action="SearchServlet">
-                    <ul id="ul_top_hypers">
-                        <li><h2>Search</h2></li>
+                    <ul class="inline">
                         <li>Departure :</li>
                         <li>
                             <select class="selectpicker" name="txtDeparture">
@@ -109,9 +109,17 @@
                                     <th class="header">Departure time</th>
                                     <th class="header">Termination time</th>
                                     <th class="header">Available seat</th>
-                                    <th class="header">Price</th>
+                                    <th class="header">Price (VNĐ)</th>
                                     <th class="header">Book ticket</th>
                                 </tr>
+
+                                <c:if test="${requestScope.check eq 'check'}">
+                                    <tr>
+                                        <td colspan="9">
+                                            <h2>Sorry. No trip is available for your choose.</h2>
+                                        </td>
+                                    </tr>
+                                </c:if>
                                 <c:set var="depS" value="${requestScope.depS}" />
                                 <c:set var="terS" value="${requestScope.terS}" />
                                 <c:forEach var="trip" items="${requestScope.trips}" varStatus="counter">
