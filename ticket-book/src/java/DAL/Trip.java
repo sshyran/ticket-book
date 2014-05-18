@@ -21,6 +21,15 @@ public class Trip {
     private int routeId;
     private String departure;
     private String terminate;
+    private String routeName;//thuộc tính phụ
+
+    public String getRouteName() {
+        return routeName;
+    }
+
+    public void setRouteName(String routeName) {
+        this.routeName = routeName;
+    }
 
     public int getId() {
         return id;
@@ -78,32 +87,25 @@ public class Trip {
         this.terminate = terminate;
     }
 
-    public String getDepTime() {
-        return depTime;
-    }
-
     public void setDepTime(String depTime) {
         this.depTime = depTime;
-    }
-
-    public String getTerTime() {
-        return terTime;
     }
 
     public void setTerTime(String terTime) {
         this.terTime = terTime;
     }
-    
 
-    public Trip(int routeId, String depTime, String terTime, float price, int totalSeat,
-            int availableSeat,int id) {
+    public Trip(int id, String depTime, String terTime, float price, int totalSeat,
+            int availableSeat, int routeId, String departure, String terminate) {
         this.id = id;
         this.depTime = depTime;
         this.terTime = terTime;
         this.price = price;
         this.totalSeat = totalSeat;
-        this.availableSeat = availableSeat;        
+        this.availableSeat = availableSeat;
         this.routeId = routeId;
+        this.departure = departure;
+        this.terminate = terminate;
     }
 
     public Trip(int id, String depTime, String terTime, float price, int totalSeat, int availableSeat) {
@@ -114,4 +116,16 @@ public class Trip {
         this.totalSeat = totalSeat;
         this.availableSeat = availableSeat;
     }
+
+    public String getDepTime() {
+        return depTime;
+    }
+
+    public String getTerTime() {
+        return terTime;
+    }
+
+    public Trip() {
+    }
+
 }
