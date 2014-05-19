@@ -31,7 +31,7 @@
         <div id="wrapper">
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div>
-                    <a class="navbar-brand" href="index.html">SB Admin</a>
+                    <a class="navbar-brand" href="admin.jsp">SB Admin</a>
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                    
