@@ -46,6 +46,7 @@
                     <td>
                         <input type="submit" name="btnDelete" id="btnDelete" value="Delete" />
                         <a href="stationAdmin.jsp"><input type="button" value="Station"/></a>
+                        <a href="admin.jsp"><input type="button" value="SBAdmin"/></a>
                     </td>
                 </tr>
             </table>
