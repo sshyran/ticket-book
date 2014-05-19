@@ -60,7 +60,15 @@ public class RouteCRUD extends HttpServlet {
                 JdbcUtil.executeUpdate(sql, false, id);
                 request.setAttribute("errors", "Deleted successfully !");
 
-            } 
+            }
+            else if (request.getParameter("lnkDelete") != null) {
+                String sql = "UPDATE Route SET isShow=? WHERE id=?";
+                /*
+                 * Truy vấn và chia sẻ kết quả trong request
+                 */
+                 JdbcUtil.executeUpdate(sql, false, id);
+                request.setAttribute("errors", "Deleted successfully !");
+            }
         } catch (Exception e) {
             request.setAttribute("errors", "Data manipilation error !");
         }

@@ -98,7 +98,13 @@ public class JdbcUtil
             throw new RuntimeException(ex);
         }
     }
-
+     /**
+     * Truy vấn dữ liệu (SELECT)
+     * @param sql câu lệnh truy vấn chứa tham số (?)
+     * @param args giá trị tham số trong câu lệnh sql
+     * @return ResultSet chứa kết quả truy vấn
+     * @exception lỗi truy vấn dữ liệu
+     */
   
     public static ResultSet executeQuery(String sql, Object...args){
         try{
@@ -120,19 +126,6 @@ public class JdbcUtil
     }
 
    
-    public static Object executeScalar(String sql, Object...args){
-        try{
-            Object value = null;
-            ResultSet resultSet = JdbcUtil.executeQuery(sql, args);
-            if(resultSet.next()){
-                value = resultSet.getObject(1);
-            }
-            JdbcUtil.closeConnection(resultSet);
-            return value;
-        }
-        catch (Exception ex){
-            throw new RuntimeException(ex);
-        }
-    }
+    
 }
 
