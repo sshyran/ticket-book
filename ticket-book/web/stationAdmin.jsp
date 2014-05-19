@@ -45,6 +45,7 @@
                         <input type="submit" name="btnUpdate" id="btnUpdate" value="Update" />
                         <input type="submit" name="btnDelete" id="btnDelete" value="Delete" />
                         <a href="routeAdmin.jsp"><input type="button" value="Route"/></a>
+                        <a href="admin.jsp"><input type="button" value="SBAdmin"/></a>
                     </td>
                 </tr>
             </table>
