@@ -1,0 +1,45 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div>
+        <a class="navbar-brand" href="admin.jsp">Welcome Admin</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+            <!--<li><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>-->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i>Trip<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="CollectTrip">View</a></li>
+                    <li><a href="addTrip.jsp">Add a Trip</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i>Route<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="routeAdmin.jsp">Route</a></li>
+                    <li><a href="stationAdmin.jsp">Station</a></li>
+
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown user-dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${sessionScope.ADMIN.fullName} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                    <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
+                    <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                    <li class="divider"></li>
+                    <li><a href="LogoutServlet"><i class="fa fa-power-off"></i> Log Out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
