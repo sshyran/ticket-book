@@ -52,6 +52,15 @@
                                 <li><a href="#">Last Item</a></li>
                             </ul>
                         </li>
+                        
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Manage Route <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="routeAdmin.jsp">Route</a></li>
+                                <li><a href="stationAdmin.jsp">Station</a></li>
+
+                            </ul>
+                        </li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
