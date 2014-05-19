@@ -61,7 +61,7 @@ public class BookingServlet extends HttpServlet {
                 float total = price * no;
                 // insert DB
                 Connection conn = DAO.makeConnection();
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO Booking (tripId,name,email,phone,numTicket,total,isPaid) Values(?,?,?,?,?,?,?)");
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO Booking (tripId,name,email,phone,numTicket,total,isPaid) Values(?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
                 stmt.setInt(1, id);
                 stmt.setString(2, name);
                 stmt.setString(3, email);
@@ -71,6 +71,11 @@ public class BookingServlet extends HttpServlet {
                 stmt.setBoolean(7, false);
                 stmt.execute();
 
+                ResultSet res = stmt.getGeneratedKeys();
+                int orderID = 0;
+                while (res.next()) {
+                    orderID = res.getInt(1);
+                }
                 // trang confirm.jsp
                 stmt = conn.prepareStatement("SELECT * from Trip where id=?");
                 stmt.setInt(1, id);
@@ -79,23 +84,28 @@ public class BookingServlet extends HttpServlet {
                     int routeId = rs.getInt("routeId");
                     String depTime = rs.getString("departTime");
                     String terTime = rs.getString("terminTime");
+                    
                     Trip trip = new Trip();
                     trip.setRouteId(routeId);
                     trip.setDepTime(depTime);
                     trip.setTerTime(terTime);
                     trip.setPrice(price);
+                    
                     SearchBean bean = new SearchBean();
                     Station depStation = bean.searchStation(routeId, "departure");
                     Station terStation = bean.searchStation(routeId, "terminate");
+                    
+                    
                     request.setAttribute("trip", trip);
                     request.setAttribute("routeStart", depStation);
                     request.setAttribute("routeEnd", terStation);
-                    
+
                     request.setAttribute("name", name);
                     request.setAttribute("total", total);
                     request.setAttribute("numTicket", no);
                     request.setAttribute("email", email);
                     request.setAttribute("phone", phone);
+                    request.setAttribute("orderID", orderID);
 
                     request.getRequestDispatcher("confirm.jsp").forward(request, response);
                 }

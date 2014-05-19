@@ -13,11 +13,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Homepage</title>
+        <title>Đặt vé</title>
         <link href="front-end/css/bootstrap.css" rel="stylesheet">
         <link href="front-end/css/style.css" rel="stylesheet">
         <link href="front-end/css/fontello.css" type="text/css" rel="stylesheet"
-              <link href="${pageContext.request.contextPath}/cssPhuongDN/bootstrap-datetimepicker.min.css" rel="stylesheet">
+         <link href="${pageContext.request.contextPath}/cssPhuongDN/bootstrap-datetimepicker.min.css" rel="stylesheet">
         <script type="${pageContext.request.contextPath}/cssPhuongDN/jquery.min.js"></script>
         <script type="${pageContext.request.contextPath}/cssPhuongDN/bootstrap.min.js"></script>
         <script type="${pageContext.request.contextPath}/cssPhuongDN/bootstrap-datetimepicker.min.js"></script>
@@ -28,6 +28,32 @@
         <style>
             body {
                 padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            }
+            #headerwrap input[type=text] {
+                background: #ffffff; 
+                font-family: 'Open Sans', sans serif;
+                font-size: 1.3125em;
+                border: 1px solid #cccccc;
+                text-align: center;
+                vertical-align: middle;
+                margin-bottom: 0 !important;
+            }
+            #headerwrap input[type=text]:focus {
+                background: #ffffff; 
+                border-color: rgba(82, 168, 236, 0.8);
+                outline: 0;
+                outline: thin dotted \9;
+                /* IE6-9 */
+
+                -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+                -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+            }
+            h4 {
+                font-size: 1em;
+                line-height: 1.5;
+                margin-top: 1em;
+                margin-bottom: 1em;
             }
         </style>
         <link href="front-end/css/bootstrap-responsive.css" rel="stylesheet">
@@ -67,27 +93,27 @@
             <div class="container">
                 <div class="row">
                     <div class="span12">
-                        <center>
+                        <center id="center">
                             <form action="BookingServlet">
-                                <table border="none" style="background-color: white">
+                                <table border="0" style="background-color: grey">
                                     <tr>
                                         <td>
                                             <h4>Name</h4>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtName" />
+                                            <input type="text" name="txtName" required="true"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><h4>Email</h4></td>
                                         <td>
-                                            <input type="email" name="txtEmail" />
+                                            <input type="email" name="txtEmail" required="true"  />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><h4>Phone</h4></td>
                                         <td>
-                                            <input type="text" name="txtPhone" />
+                                            <input type="number" name="txtPhone" required="true" />
                                         </td>
                                     </tr>
                                     <tr>

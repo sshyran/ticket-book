@@ -78,6 +78,7 @@
                             <p>Kết thúc : ${requestScope.routeEnd.sname} (${requestScope.routeEnd.address}) lúc ${requestScope.trip.terTime}</p>
                             <p>Số ghế : ${requestScope.numTicket}</p>
                             <p>Thành tiền : ${requestScope.total}</p>
+                            <p>Mã đặt chỗ : ${requestScope.orderID}</p>
                             <i>Xin vui lòng thanh toán để đảm bảo chỗ</i>
                         </div>
                     </div>
