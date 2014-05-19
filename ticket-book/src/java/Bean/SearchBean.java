@@ -78,18 +78,18 @@ public class SearchBean implements Serializable {
         try {
             conn = DAO.makeConnection();
             String sql = "";
-            if(typeS.equals("departure")){
+            if (typeS.equals("departure")) {
                 sql = "SELECT r.id, r.departure, s.province, s.sname, s.[address] "
-                    + "FROM [Route] r "
-                    + "JOIN Station s "
-                    + "ON s.id = r.departure "
-                    + "WHERE r.id=? ";
-            }else if(typeS.equals("terminate")){
+                        + "FROM [Route] r "
+                        + "JOIN Station s "
+                        + "ON s.id = r.departure "
+                        + "WHERE r.id=? ";
+            } else if (typeS.equals("terminate")) {
                 sql = "SELECT r.id, r.departure, s.province, s.sname, s.[address] "
-                    + "FROM [Route] r "
-                    + "JOIN Station s "
-                    + "ON s.id = r.terminate "
-                    + "WHERE r.id=? ";
+                        + "FROM [Route] r "
+                        + "JOIN Station s "
+                        + "ON s.id = r.terminate "
+                        + "WHERE r.id=? ";
             }
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, placeID);
@@ -119,5 +119,38 @@ public class SearchBean implements Serializable {
             }
         }
         return station;
+    }
+
+    public Trip searchTrip(String id) {
+        Connection c = DAO.makeConnection();
+        try {
+            PreparedStatement prepare = c.prepareStatement("select t.id, t.departTime, t.terminTime, t.price, t.totalSeats, t.availableSeat, t.routeId from Trip t where t.id=?");
+            prepare.setString(1, id);
+            ResultSet rs = prepare.executeQuery();
+            if (rs.next()) {
+                int getId = rs.getInt("id");
+                        String dTime = rs.getDate("departTime").toString() + " " + rs.getTime("departTime").toString();
+                        String tTime = rs.getDate("terminTime").toString() + " " + rs.getTime("terminTime").toString();
+                        float price = rs.getFloat("price");
+                        int tSeat = rs.getInt("totalSeats");
+                        int aSeat = rs.getInt("availableSeat");
+                        //String routeName = rs.getString("name");
+                        int routeId = rs.getInt("routeId");
+                        Trip trip = new Trip();
+                        trip.setId(getId);
+                        trip.setDepTime(dTime);
+                        trip.setTerTime(tTime);
+                        trip.setPrice(price);
+                        trip.setTotalSeat(tSeat);
+                        trip.setAvailableSeat(aSeat);
+                        //trip.setRouteName(routeName);
+                        trip.setRouteId(routeId);
+                        return trip;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
