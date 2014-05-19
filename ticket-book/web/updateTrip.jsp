@@ -11,6 +11,9 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
+    <c:if test="${sessionScope.ADMIN==null}">
+        <c:redirect url="errorPage.jsp"/>
+    </c:if>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="${pageContext.request.contextPath}/back-end/css/bootstrap.css" rel="stylesheet">
@@ -20,37 +23,7 @@
     </head>
     <body>
         <div id="wrapper">
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div>
-                    <a class="navbar-brand" href="index.html">SB Admin</a>
-                </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav side-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Manage Trip <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Add trip</a></li>
-                                <li><a href="#">Another Item</a></li>
-                                <li><a href="#">Third Item</a></li>
-                                <li><a href="#">Last Item</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right navbar-user">
-                        <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
-                                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <%@include file="HTML/AdminNavigation.html" %>
             <div class="col-lg-6">
                 <h2>Update Trip</h2>
                 <!--<form name="updateTrip" method="POST" action="tripServlet" accept-charset="ISO-8859-1">-->
