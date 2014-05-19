@@ -8,13 +8,7 @@ import java.sql.ResultSet;
 import javax.servlet.jsp.jstl.sql.Result;
 import javax.servlet.jsp.jstl.sql.ResultSupport;
 
-/**
- * Lớp này chứa các phương thức tiện ích giúp làm việc với CSDL một cách đơn
- * giản và nhanh chóng. Tất cả các phương thức điều chuyển ngoại lệ sang dạng
- * unchecked nên khi gọi không bắt buộc phải dùng try catch vì vậy rất thuận
- * lợi cho việc viết mã của bạn. Bạn cần cấp các thông số kết nối đến CSDL
- * thông qua các biến tĩnh để các phương thức dựa vào đó mà hoạt động.
- */
+
 public class JdbcUtil
 {
     /*
@@ -105,13 +99,7 @@ public class JdbcUtil
         }
     }
 
-    /**
-     * Truy vấn dữ liệu (SELECT)
-     * @param sql câu lệnh truy vấn chứa tham số (?)
-     * @param args giá trị tham số trong câu lệnh sql
-     * @return ResultSet chứa kết quả truy vấn
-     * @exception lỗi truy vấn dữ liệu
-     */
+  
     public static ResultSet executeQuery(String sql, Object...args){
         try{
             PreparedStatement statement = JdbcUtil.createPreparedStatement(sql, args);
@@ -122,16 +110,7 @@ public class JdbcUtil
             throw new RuntimeException(ex);
         }
     }
-    /**
-     * Truy vấn và chuyển đổi dữ liệu kết quả truy vấn sang Result
-     * để tiến chia sẽ trên web. Vi du trong servlet:
-     * Result result = JdbcUtil.toResult("SELECT * FROM Categories");
-     * request.setAttribute("result", result);
-     * @param sql câu lệnh truy vấn chứa tham số (?)
-     * @param args giá trị tham số trong câu lệnh sql
-     * @return ResultSet chứa kết quả truy vấn
-     * @exception lỗi truy vấn dữ liệu
-     */
+  
     public static Result toResult(String sql, Object...args)
     {
     	ResultSet resultSet = executeQuery(sql, args);
@@ -140,16 +119,7 @@ public class JdbcUtil
         return result;
     }
 
-    /**
-     * Truy vấn một giá trị đơn.
-     * Ví dụ: đếm số mặt hàng có giá từ 100 đến 250
-     * String sql = "SELECT COUNT(*) FROM Products WHERE UnitPrice BETWEEN ? AND ?";
-     * long count = (long)JdbcUtil.executeScalar(sql, 100, 250);
-     * @param sql câu lệnh truy vấn chứa tham số (?)
-     * @param args giá trị tham số của câu lệnh sql
-     * @return giá trị truy vấn được
-     * @exception lỗi truy vấn
-     */
+   
     public static Object executeScalar(String sql, Object...args){
         try{
             Object value = null;
