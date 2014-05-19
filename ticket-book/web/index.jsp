@@ -50,7 +50,7 @@
                         <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
-                                <li><a title="contact" href="#contact">Admin login</a></li>
+                                <li><a href="loginPage.jsp">Admin login</a></li>
                             </ul>
                         </nav>
                     </div>
