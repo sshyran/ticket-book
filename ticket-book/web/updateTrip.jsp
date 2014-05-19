@@ -97,26 +97,18 @@
                             <tr>
                                 <td align="right">Route ID | Route Name: </td>
                                 <td>
-                                    <select class="selectpicker" name="routeId">
-                                        <option selected>${requestScope.updateTrip.routeId}</option>
-                                        <c:set var="current" value="${requestScope.updateTrip.routeId}"/>
-                                        <!--load các route name còn lại-->
-                                        <%
-                                                    String conStr2 = new DAO().getConnectionString();
-                                                    String driver2 = new DAO().getDriverString();
-                                        %>
-                                        <sql:setDataSource var="sqlDS" url="<%=conStr2%>" driver="<%=driver2%>" />
-                                        <sql:query dataSource="${sqlDS}" var="routeNameList">
-                                            select id from [Route]
-                                        </sql:query>
-                                        <c:forEach var="row" items="${routeNameList.rowsByIndex}">
-                                            <!--<option>${row[0]} | ${row[1]}</option>-->
-                                            <c:if test="${row[0]!=current}">
-                                                <option>${row[0]}</option>
-                                            </c:if>
-                                            
-                                        </c:forEach>
-                                    </select>
+                                    <c:set var="current" value="${requestScope.updateTrip.routeId}"/>
+                                    <%
+                                                String conStr2 = new DAO().getConnectionString();
+                                                String driver2 = new DAO().getDriverString();
+                                    %>
+                                    <sql:setDataSource var="sqlDS" url="<%=conStr2%>" driver="<%=driver2%>" />
+                                    <sql:query dataSource="${sqlDS}" var="routeNameList">
+                                        select name from [Route] where id = ${current}
+                                    </sql:query>
+                                    <c:forEach var="row" items="${routeNameList.rowsByIndex}">
+                                        <input type="text" value="${current} | ${row[0]}" name="id" class="input-block-level" disabled>
+                                    </c:forEach>
                                 </td>
                             </tr>
                             <tr>
