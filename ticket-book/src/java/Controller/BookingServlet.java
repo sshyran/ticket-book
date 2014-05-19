@@ -76,6 +76,12 @@ public class BookingServlet extends HttpServlet {
                 while (res.next()) {
                     orderID = res.getInt(1);
                 }
+                stmt = conn.prepareStatement("Update Trip set availableSeat = availableSeat - ? where id = ? and availableSeat>?");
+                stmt.setInt(1, no);
+                stmt.setInt(2, id);
+                stmt.setInt(3, no);
+                stmt.execute();
+                
                 // trang confirm.jsp
                 stmt = conn.prepareStatement("SELECT * from Trip where id=?");
                 stmt.setInt(1, id);

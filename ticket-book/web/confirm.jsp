@@ -79,7 +79,7 @@
                             <p>Số ghế : ${requestScope.numTicket}</p>
                             <p>Thành tiền : ${requestScope.total}</p>
                             <p>Mã đặt chỗ : ${requestScope.orderID}</p>
-                            <i>Xin vui lòng thanh toán để đảm bảo chỗ</i>
+                            <i>Xin vui lòng thanh toán 2 ngày trước ngày khởi hành </i>
                         </div>
                     </div>
                 </div>
