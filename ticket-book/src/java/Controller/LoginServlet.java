@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Bean.LogInBean;
 import DAL.AdminAccount;
 import DAL.DAO;
 import java.io.IOException;
@@ -41,38 +42,52 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
-           
-            String uname = request.getParameter("txtUsername");
-            String password = request.getParameter("txtPassword");
-            Connection conn = DAO.makeConnection();
-            PreparedStatement prepare = conn.prepareStatement("Select * from AdminAccount where uname=? and upass=?");
-            prepare.setString(1, uname);
-            prepare.setString(2, password);
-            prepare.execute();
-            ResultSet rs = prepare.executeQuery();
-            String url = "loginPage.jsp";
-            if (rs.next()) {
-                AdminAccount admin = new AdminAccount();
-                admin.setUsername(rs.getString("uname"));
-                admin.setPassword(rs.getString("upass"));
-                admin.setFullName(rs.getString("name"));
-                HttpSession session = request.getSession();
-
-                session.setAttribute("ADMIN", admin);
-                url = "admin.jsp";
-
-            }
+        String uname = request.getParameter("txtUsername");
+        String password = request.getParameter("txtPassword");
+        // <editor-fold defaultstate="collapsed" desc="khai bean, tác giả Dương Nam Phương, sửa lại theo MVC">
+        LogInBean bean = new LogInBean();
+        AdminAccount admin = bean.LogIn(uname, password);
+        String url = "loginPage.jsp";
+        if (admin != null) {
+            url = "admin.jsp";
+            HttpSession session = request.getSession();
+            session.setAttribute("ADMIN", admin);
+        } else {
             request.setAttribute("INVALID", "Invalid username and password! Please try again");
-
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+        }
+        RequestDispatcher rd = request.getRequestDispatcher(url);
+        rd.forward(request, response);
+        // </editor-fold>
+        // <editor-fold defaultstate="collapsed" desc="kiểm tra login không đúng mô hình MVC (BỎ)">
+        /*try {
+        String uname = request.getParameter("txtUsername");
+        String password = request.getParameter("txtPassword");
+        Connection conn = DAO.makeConnection();
+        PreparedStatement prepare = conn.prepareStatement("Select * from AdminAccount where uname=? and upass=?");
+        prepare.setString(1, uname);
+        prepare.setString(2, password);
+        prepare.execute();
+        ResultSet rs = prepare.executeQuery();
+        String url = "loginPage.jsp";
+        if (rs.next()) {
+        AdminAccount admin = new AdminAccount();
+        admin.setUsername(rs.getString("uname"));
+        admin.setPassword(rs.getString("upass"));
+        admin.setFullName(rs.getString("name"));
+        HttpSession session = request.getSession();
+        session.setAttribute("ADMIN", admin);
+        url = "admin.jsp";
+        }
+        request.setAttribute("INVALID", "Invalid username and password! Please try again");
+        RequestDispatcher rd = request.getRequestDispatcher(url);
+        rd.forward(request, response);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            out.close();
-        }
+        out.close();
+        }*/
+        // </editor-fold>
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
