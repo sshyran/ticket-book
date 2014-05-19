@@ -32,6 +32,14 @@
         <servlet-name>BookingServlet</servlet-name>
         <servlet-class>Controller.BookingServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RouteCRUD</servlet-name>
+        <servlet-class>Controller.RouteCRUD</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StationCRUD</servlet-name>
+        <servlet-class>Controller.StationCRUD</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>BookingServlet</servlet-name>
         <url-pattern>/BookingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RouteCRUD</servlet-name>
+        <url-pattern>/RouteCRUD</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StationCRUD</servlet-name>
+        <url-pattern>/StationCRUD</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
