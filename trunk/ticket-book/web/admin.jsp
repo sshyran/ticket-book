@@ -15,6 +15,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <c:if test="${sessionScope.ADMIN==null}">
+        <c:redirect url="errorPage.jsp"/>
+    </c:if>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="${pageContext.request.contextPath}/back-end/js/confirms/confirms.js"></script>
@@ -31,7 +34,7 @@
         <div id="wrapper">
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div>
-                    <a class="navbar-brand" href="index.html">SB Admin</a>
+                    <a class="navbar-brand" href="admin.jsp">Welcome Admin</a>
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
@@ -44,17 +47,15 @@
                         <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Bootstrap Grid</a></li>
                         <li class="active"><a href="blank-page.html"><i class="fa fa-file"></i> Blank Page</a></li>-->
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Manage Trip <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i>Trip<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Add trip</a></li>
-                                <li><a href="#">Another Item</a></li>
-                                <li><a href="#">Third Item</a></li>
-                                <li><a href="#">Last Item</a></li>
+                                <li><a href="CollectTrip">View</a></li>
+                                <li><a href="addTrip.jsp">Add a Trip</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Manage Route <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i>Route<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="routeAdmin.jsp">Route</a></li>
                                 <li><a href="stationAdmin.jsp">Station</a></li>
@@ -79,50 +80,52 @@
             </nav>
 
             <div class="col-lg-6">
-                <h2>View Trips</h2>
-                <table class="table table-bordered table-hover tablesorter">
-                    <thead>
-                        <tr>
-                            <th class="header">ID <i class="fa fa-sort"></i></th>
-                            <th class="header">Start at <i class="fa fa-sort"></i></th>
-                            <th class="header">Arrival at <i class="fa fa-sort"></i></th>
-                            <th class="header">Price <i class="fa fa-sort"></i></th>
-                            <th class="header">Total Seats <i class="fa fa-sort"></i></th>
-                            <th class="header">Available Seats <i class="fa fa-sort"></i></th>
-                            <th class="header">Route ID <i class="fa fa-sort"></i></th>
-                            <th class="header">From <i class="fa fa-sort"></i></th>
-                            <th class="header">To <i class="fa fa-sort"></i></th>
-                            <th class="header">Update <i class="fa fa-sort"></i></th>
-                            <th class="header">Delete <i class="fa fa-sort"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="trip" items="${requestScope.tripList}">
+                <c:if test="${requestScope.tripList ne null}">
+                    <h2>View Trips</h2>
+                    <table class="table table-bordered table-hover tablesorter">
+                        <thead>
                             <tr>
-                                <td><c:out value="${trip.id}"/></td>
-                                <td><c:out value="${trip.depTime}"/></td>
-                                <td><c:out value="${trip.terTime}"/></td>
-                                <td><c:out value="${trip.price}"/></td>
-                                <td><c:out value="${trip.totalSeat}"/></td>
-                                <td><c:out value="${trip.availableSeat}"/></td>
-                                <td><c:out value="${trip.routeId}"/></td>
-                                <td><c:out value="${trip.departure}"/></td>
-                                <td><c:out value="${trip.terminate}"/></td>
-                                <td>
-                                    <a href="tripServlet?action=update&id=${trip.id}" class="btn btn-success">
-                                        Update
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="tripServlet?action=delete&id=${trip.id}" class="btn btn-danger">
-                                        Delete
-                                    </a>
-                                </td>
+                                <th class="header">ID <i class="fa fa-sort"></i></th>
+                                <th class="header">Start at <i class="fa fa-sort"></i></th>
+                                <th class="header">Arrival at <i class="fa fa-sort"></i></th>
+                                <th class="header">Price <i class="fa fa-sort"></i></th>
+                                <th class="header">Total Seats <i class="fa fa-sort"></i></th>
+                                <th class="header">Available Seats <i class="fa fa-sort"></i></th>
+                                <th class="header">Route ID <i class="fa fa-sort"></i></th>
+                                <th class="header">From <i class="fa fa-sort"></i></th>
+                                <th class="header">To <i class="fa fa-sort"></i></th>
+                                <th class="header">Update <i class="fa fa-sort"></i></th>
+                                <th class="header">Delete <i class="fa fa-sort"></i></th>
                             </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-                <a href="addTrip.jsp" class="btn btn-primary">Add trip</a>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="trip" items="${requestScope.tripList}">
+                                <tr>
+                                    <td><c:out value="${trip.id}"/></td>
+                                    <td><c:out value="${trip.depTime}"/></td>
+                                    <td><c:out value="${trip.terTime}"/></td>
+                                    <td><c:out value="${trip.price}"/></td>
+                                    <td><c:out value="${trip.totalSeat}"/></td>
+                                    <td><c:out value="${trip.availableSeat}"/></td>
+                                    <td><c:out value="${trip.routeId}"/></td>
+                                    <td><c:out value="${trip.departure}"/></td>
+                                    <td><c:out value="${trip.terminate}"/></td>
+                                    <td>
+                                        <a href="tripServlet?action=update&id=${trip.id}" class="btn btn-success">
+                                            Update
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="tripServlet?action=delete&id=${trip.id}" class="btn btn-danger">
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                    <a href="addTrip.jsp" class="btn btn-primary">Add trip</a>
+                </c:if>
             </div>
         </div>
     </body>
