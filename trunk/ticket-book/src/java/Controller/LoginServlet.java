@@ -4,12 +4,22 @@
  */
 package Controller;
 
+import DAL.AdminAccount;
+import DAL.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,16 +42,35 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {            
+           
+            String uname = request.getParameter("txtUsername");
+            String password = request.getParameter("txtPassword");
+            Connection conn = DAO.makeConnection();
+            PreparedStatement prepare = conn.prepareStatement("Select * from AdminAccount where uname=? and upass=?");
+            prepare.setString(1, uname);
+            prepare.setString(2, password);
+            prepare.execute();
+            ResultSet rs = prepare.executeQuery();
+            String url = "loginPage.jsp";
+            if (rs.next()) {
+                AdminAccount admin = new AdminAccount();
+                admin.setUsername(rs.getString("uname"));
+                admin.setPassword(rs.getString("upass"));
+                admin.setFullName(rs.getString("name"));
+                HttpSession session = request.getSession();
+
+                session.setAttribute("ADMIN", admin);
+                url = "admin.jsp";
+
+            }
+            request.setAttribute("INVALID", "Invalid username and password! Please try again");
+
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
             out.close();
         }
     }
