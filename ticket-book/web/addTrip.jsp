@@ -15,6 +15,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <c:if test="${sessionScope.ADMIN==null}">
+        <c:redirect url="errorPage.jsp"/>
+    </c:if>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="${pageContext.request.contextPath}/back-end/js/confirms/confirms.js"></script>
@@ -29,45 +32,7 @@
     </head>
     <body>
         <div id="wrapper">
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div>
-                    <a class="navbar-brand" href="index.html">SB Admin</a>
-                </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav side-nav">
-                        <!--<li><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                        <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
-                        <li><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
-                        <li><a href="forms.html"><i class="fa fa-edit"></i> Forms</a></li>
-                        <li><a href="typography.html"><i class="fa fa-font"></i> Typography</a></li>
-                        <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Bootstrap Elements</a></li>
-                        <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Bootstrap Grid</a></li>
-                        <li class="active"><a href="blank-page.html"><i class="fa fa-file"></i> Blank Page</a></li>-->
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Manage Trip <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Add trip</a></li>
-                                <li><a href="#">Another Item</a></li>
-                                <li><a href="#">Third Item</a></li>
-                                <li><a href="#">Last Item</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right navbar-user">
-                        <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
-                                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <%@include file="HTML/AdminNavigation.html" %>
 
             <div class="col-lg-6">
                 <h2>Add a trip</h2>
