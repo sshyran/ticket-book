@@ -4,6 +4,8 @@
  */
 package Controller;
 
+import Bean.SearchBean;
+import Bean.TripBean;
 import DAL.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -46,49 +48,17 @@ public class tripServlet extends HttpServlet {
             String query;
             ResultSet rs = null;
             if (action.equals("delete")) {
-                try {
-                    // <editor-fold defaultstate="collapsed" desc="delete trip">
-                    cn = DriverManager.getConnection(new DAO().getConnectionString());
-                    stmt = cn.createStatement();
-                    query = "update Trip set isShow=0 where id=" + id;
-                    stmt.executeUpdate(query);
-                    // </editor-fold>
-                } catch (SQLException ex) {
-                    Logger.getLogger(tripServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                // <editor-fold defaultstate="collapsed" desc="delete trip">
+                TripBean tb = new TripBean();
+                tb.deleteTrip(id);
+                // </editor-fold>
                 response.sendRedirect("CollectTrip");
             }
             if (action.equals("update")) {
                 // <editor-fold defaultstate="collapsed" desc="to updateTrip.jsp">
-                try {
-                    cn = DriverManager.getConnection(new DAO().getConnectionString());
-                    stmt = cn.createStatement();
-                    //query = "select t.id, t.departTime, t.terminTime, t.price, t.totalSeats, t.availableSeat, r.name from Trip t, [Route] r where t.routeId=r.id and t.id=" + id;
-                    query = "select t.id, t.departTime, t.terminTime, t.price, t.totalSeats, t.availableSeat, t.routeId from Trip t where t.id=" + id;
-                    rs = stmt.executeQuery(query);
-                    if (rs.next()) {
-                        int getId = rs.getInt("id");
-                        String dTime = rs.getDate("departTime").toString() + " " + rs.getTime("departTime").toString();
-                        String tTime = rs.getDate("terminTime").toString() + " " + rs.getTime("terminTime").toString();
-                        float price = rs.getFloat("price");
-                        int tSeat = rs.getInt("totalSeats");
-                        int aSeat = rs.getInt("availableSeat");
-                        //String routeName = rs.getString("name");
-                        int routeId = rs.getInt("routeId");
-                        Trip trip = new Trip();
-                        trip.setId(getId);
-                        trip.setDepTime(dTime);
-                        trip.setTerTime(tTime);
-                        trip.setPrice(price);
-                        trip.setTotalSeat(tSeat);
-                        trip.setAvailableSeat(aSeat);
-                        //trip.setRouteName(routeName);
-                        trip.setRouteId(routeId);
-                        request.setAttribute("updateTrip", trip);
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(tripServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                SearchBean sb = new SearchBean();
+                Trip t = sb.searchTrip(id);
+                request.setAttribute("updateTrip", t);
                 RequestDispatcher rd = request.getRequestDispatcher("updateTrip.jsp");
                 rd.forward(request, response);
                 // </editor-fold>
@@ -101,47 +71,12 @@ public class tripServlet extends HttpServlet {
                     float newPrice = Float.parseFloat(request.getParameter("price"));
                     int newTotalSeat = Integer.parseInt(request.getParameter("tSeat"));
                     int newAvailableSeat = Integer.parseInt(request.getParameter("aSeat"));
-                    //String newRoute = request.getParameter("routeName").replaceAll("^(\\d)*\\ \\|\\ ", "");
-                    //int newRouteID = Integer.parseInt(request.getParameter("routeName").replaceAll("\\ \\|\\ (.)*$", ""));
-                    int newRouteID = Integer.parseInt(request.getParameter("routeId"));
-                    //out.print("newRouteID = " + newRouteID + "<br/>");
-                    // <editor-fold defaultstate="collapsed" desc="get new route id">
-//                    cn = DriverManager.getConnection(new DAO().getConnectionString());
-//                    stmt = cn.createStatement();
-//                    //out.print("|" + newRoute + "|<br/>");
-//                    //query = "select id from [Route] where name=N'" + newRoute + "'";
-//                    query = "select id,name from [Route]";
-//                    out.print("|" + query + "|<br/>");
-//                    rs = stmt.executeQuery(query);
-//
-//                    while (rs.next()) {
-//
-//                        out.print(newRoute + "<br/>" + rs.getString("name"));
-//                        out.print("<br/>");
-//                        out.print(new String(newRoute.getBytes(), "UTF-8").equals(rs.getString("name")));
-//                        out.print(new String(newRoute.getBytes(), "UTF-16").equals(rs.getString("name")));
-//                        out.print(new String(newRoute.getBytes(), "ISO-8859-1").equals(rs.getString("name")));
-//                        out.print(new String(newRoute.getBytes(), "ISO-8859-1"));
-//
-//                        out.print("<br/>");
-//                        out.print("<br/>");
-//                    }
-//                    out.print(newRouteID);
-                    // </editor-fold>
-                    // <editor-fold defaultstate="collapsed" desc="update trip">
-                    cn = DriverManager.getConnection(new DAO().getConnectionString());
-                    stmt = cn.createStatement();
-                    //out.print(id);
-                    query = "update Trip set departTime='" + newDTime + "',terminTime='" + newTTime + "',price=" + newPrice + ",totalSeats=" + newTotalSeat + ",availableSeat=" + newAvailableSeat + ",routeId=" + newRouteID + " where id=" + id;
-                    //out.print(query);
-                    //query = "update Trip set departTime='" + newDTime + "',";
-                    stmt.executeUpdate(query);
-                    response.sendRedirect("CollectTrip");
-                    // </editor-fold>
-                    out.print("OK");
+                    TripBean tb = new TripBean();
+                    tb.updateTrip(id, newDTime, newTTime, newPrice, newTotalSeat, newAvailableSeat);
                 } catch (Exception e) {
-                    Logger.getLogger(tripServlet.class.getName()).log(Level.SEVERE, null, e);
-                    out.print("139 " + " " + e);
+                    System.out.println(e);
+                } finally {
+                    response.sendRedirect("CollectTrip");
                 }
                 // </editor-fold>
             }
