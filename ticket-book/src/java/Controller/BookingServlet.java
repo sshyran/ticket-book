@@ -55,20 +55,22 @@ public class BookingServlet extends HttpServlet {
                 int id = Integer.parseInt(request.getParameter("tripID"));
                 int no = Integer.parseInt(request.getParameter("NumOfTicket"));
                 float price = Float.parseFloat(request.getParameter("price"));
+                String method = request.getParameter("Method");
                 String name = request.getParameter("txtName");
                 String email = request.getParameter("txtEmail");
                 String phone = request.getParameter("txtPhone");
                 float total = price * no;
                 // insert DB
                 Connection conn = DAO.makeConnection();
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO Booking (tripId,name,email,phone,numTicket,total,isPaid) Values(?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO Booking (tripId,name,email,phone,numTicket,total,method,isPaid) Values(?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
                 stmt.setInt(1, id);
                 stmt.setString(2, name);
                 stmt.setString(3, email);
                 stmt.setString(4, phone);
                 stmt.setInt(5, no);
                 stmt.setFloat(6, total);
-                stmt.setBoolean(7, false);
+                stmt.setString(7, method);
+                stmt.setBoolean(8, false);
                 stmt.execute();
 
                 ResultSet res = stmt.getGeneratedKeys();
@@ -112,7 +114,8 @@ public class BookingServlet extends HttpServlet {
                     request.setAttribute("email", email);
                     request.setAttribute("phone", phone);
                     request.setAttribute("orderID", orderID);
-
+                    
+                    conn.close();
                     request.getRequestDispatcher("confirm.jsp").forward(request, response);
                 }
 

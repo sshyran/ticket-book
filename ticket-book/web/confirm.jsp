@@ -76,7 +76,7 @@
                             <p>Số ĐT : ${requestScope.phone}</p>
                             <p>Khởi hành : ${requestScope.routeStart.sname} (${requestScope.routeStart.address}) lúc ${requestScope.trip.depTime}</p>
                             <p>Kết thúc : ${requestScope.routeEnd.sname} (${requestScope.routeEnd.address}) lúc ${requestScope.trip.terTime}</p>
-                            <p>Số ghế : ${requestScope.numTicket}</p>
+                            <p>Số vé : ${requestScope.numTicket}</p>
                             <p>Thành tiền : ${requestScope.total}</p>
                             <p>Mã đặt chỗ : ${requestScope.orderID}</p>
                             <i>Xin vui lòng thanh toán 2 ngày trước ngày khởi hành </i>

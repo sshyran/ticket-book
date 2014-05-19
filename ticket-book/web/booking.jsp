@@ -17,7 +17,7 @@
         <link href="front-end/css/bootstrap.css" rel="stylesheet">
         <link href="front-end/css/style.css" rel="stylesheet">
         <link href="front-end/css/fontello.css" type="text/css" rel="stylesheet"
-         <link href="${pageContext.request.contextPath}/cssPhuongDN/bootstrap-datetimepicker.min.css" rel="stylesheet">
+              <link href="${pageContext.request.contextPath}/cssPhuongDN/bootstrap-datetimepicker.min.css" rel="stylesheet">
         <script type="${pageContext.request.contextPath}/cssPhuongDN/jquery.min.js"></script>
         <script type="${pageContext.request.contextPath}/cssPhuongDN/bootstrap.min.js"></script>
         <script type="${pageContext.request.contextPath}/cssPhuongDN/bootstrap-datetimepicker.min.js"></script>
@@ -123,6 +123,15 @@
                                                 <c:forEach var="i" begin="1" end="${requestScope.count}" step="1">
                                                     <option value="${i}">${i}</option>
                                                 </c:forEach>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><h4>Method</h4></td>
+                                        <td>
+                                            <select name="Method">
+                                                <option value="CASH">Cash</option>
+                                                <option value="Bank">Bank</option>
                                             </select>
                                         </td>
                                     </tr>
