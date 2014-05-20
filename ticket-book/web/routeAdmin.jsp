@@ -16,6 +16,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
+    <c:if test="${sessionScope.ADMIN==null}">
+        <c:redirect url="errorPage.jsp"/>
+    </c:if>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="${pageContext.request.contextPath}/back-end/js/confirms/confirms.js"></script>
@@ -34,48 +37,7 @@
         <hr>
         <h3 style="text-align: center; color: red;">${errors}</h3>
         <div id="wrapper">
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div>
-                    <a class="navbar-brand" href="admin.jsp">SB Admin</a>
-                </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav side-nav">
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Manage Trip <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Add trip</a></li>
-                                <li><a href="#">Another Item</a></li>
-                                <li><a href="#">Third Item</a></li>
-                                <li><a href="#">Last Item</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Manage Route <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="routeAdmin.jsp">Route</a></li>
-                                <li><a href="stationAdmin.jsp">Station</a></li>
-
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right navbar-user">
-
-                        <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${sessionScope.ADMIN.fullName} <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
-                                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-                                <li class="divider"></li>
-                                <li><a href="LogoutServlet"><i class="fa fa-power-off"></i> Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <%@include file="HTML/AdminNavigation.html" %>
             <div class="container">
 
             </div>
@@ -95,7 +57,7 @@
                                     select * from [Station]
                                 </sql:query>
                                 <c:forEach var="row" items="${StationSNameList.rowsByIndex}">
-
+                                    
                                     <option value="${row[0]}">${row[1]}</option>
 
                                 </c:forEach>
@@ -110,14 +72,14 @@
                                         select * from [Station]
                                     </sql:query>
                                     <c:forEach var="row" items="${StationSNameList.rowsByIndex}">
-                                        <option value="${row[0]}">${row[1]}</option>
+                                         <option value="${row[0]}">${row[1]}</option>
                                     </c:forEach>
                                 </select>
                             </div>
                             <div class="control-group">
                                 <div class="controls">
 
-                                    <button type="submit" class="btn" name="btnInsert" id="btnInsert">Insert</button>
+                                    <button type="submit" class="btn btn-success" name="btnInsert" id="btnInsert">Insert</button>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +91,7 @@
 
                     <form action="RouteCRUD" method="get" class="form-search">
                         <input type="text" class="input-medium search-query"  placeholder="Input To Search" name="txtSearch" value="${search}"/>
-                        <input type="submit" class="btn" name="btnSearch"  value="Search"/>
+                        <input type="submit" class="btn btn-primary" name="btnSearch"  value="Search"/>
                     </form>
                 </CENTER>
                 <div class="row clearfix">
@@ -138,16 +100,16 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        ID
+							ID
                                     </th>
                                     <th>
-                                        Departure
+							Departure
                                     </th>
                                     <th>
-                                        Terminate
+							Terminate
                                     </th>
                                     <th>
-                                        Name
+							Name
                                     </th>
                                     <th>
                                         &nbsp;
