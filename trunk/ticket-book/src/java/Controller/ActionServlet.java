@@ -43,7 +43,6 @@ public class ActionServlet extends HttpServlet {
             } else if (action.equals("Home")) {
                 url = WelcomeServlet;
             } else if (action.equals("Book ticket")) {
-                // xem lai, keu Phuong commit bai truoc
                 url = BookingServlet;
             } else if (action.equals("Manage Trip")) {
                 url = tripServlet;
