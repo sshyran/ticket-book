@@ -1,7 +1,7 @@
 <%-- 
     Document   : admin
     Created on : May 16, 2014, 2:35:23 PM
-    Author     : khoatnd
+    Author     : bc
 --%>
 <%@page import="java.sql.Date"%>
 <%@page import="DAL.Trip"%>
