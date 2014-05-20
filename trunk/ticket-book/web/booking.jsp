@@ -114,7 +114,7 @@
                                     <tr>
                                         <td><h4>Phone</h4></td>
                                         <td>
-                                            <input type="number" name="txtPhone" required="true" />
+                                            <input type="text" name="txtPhone" required="true" />
                                         </td>
                                     </tr>
                                     <tr>
