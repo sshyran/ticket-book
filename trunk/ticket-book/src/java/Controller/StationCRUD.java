@@ -4,7 +4,7 @@
  */
 package Controller;
 
-import Util.JdbcUtil;
+import Bean.ManageRouteBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.SortedMap;
@@ -21,11 +21,8 @@ import javax.servlet.jsp.jstl.sql.Result;
  */
 public class StationCRUD extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -49,24 +46,24 @@ public class StationCRUD extends HttpServlet {
          * ứng (btnInsert, btnUpdate, btnDelete, btnSelect, btnSearch)
          */
         try {
-            if ((request.getParameter("btnInsert") != null) /* && (request.getParameter("btnInsert") != "") */) {
+            if ((request.getParameter("btnInsert") != null) /* && (request.getParameter("btnInsert") != "") */ ) {
                 String sql = "INSERT INTO Station(sname, address, province) VALUES(?, ?, ?)";
-                JdbcUtil.executeUpdate(sql, sname, address, province);
+                ManageRouteBean.executeUpdate(sql, sname, address, province);
                 request.setAttribute("errors", "Inserted successfully !");
             } else if (request.getParameter("btnUpdate") != null) {
                 String sql = "UPDATE Station SET sname=?, address=?, province=? WHERE Id=?";
-                JdbcUtil.executeUpdate(sql, sname, address, province, id);
+                ManageRouteBean.executeUpdate(sql, sname, address, province, id);
                 request.setAttribute("errors", "Updated successfully !");
             } else if (request.getParameter("lnkDelete") != null) {
                 String sql = "DELETE FROM Station WHERE Id=?";
-                JdbcUtil.executeUpdate(sql, id);
+                ManageRouteBean.executeUpdate(sql, id);
                 request.setAttribute("errors", "Deleted successfully !");
             } else if (request.getParameter("lnkEdit") != null) {
                 String sql = "SELECT * FROM Station WHERE Id=?";
                 /*
                  * Truy vấn và chia sẻ kết quả trong request
                  */
-                Result result = JdbcUtil.toResult(sql, id);
+                Result result = ManageRouteBean.toResult(sql, id);
                 @SuppressWarnings("rawtypes")
                 SortedMap station = result.getRows()[0];
                 request.setAttribute("st", station);
@@ -90,7 +87,7 @@ public class StationCRUD extends HttpServlet {
          * Tìm kiếm theo tên và chia sẽ kết quả trong request
          */
         String searchSql = "SELECT * FROM Station  WHERE sname LIKE ?";
-        Result stSearch = JdbcUtil.toResult(searchSql, "%" + search + "%");
+        Result stSearch = ManageRouteBean.toResult(searchSql, "%" + search + "%");
         request.setAttribute("sts", stSearch);
         /*
          * Chuyển tiếp sang trang stationAdmin.jsp
@@ -99,10 +96,8 @@ public class StationCRUD extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP
-     * <code>GET</code> method.
-     *
+    /** 
+     * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -114,10 +109,8 @@ public class StationCRUD extends HttpServlet {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP
-     * <code>POST</code> method.
-     *
+    /** 
+     * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -129,9 +122,8 @@ public class StationCRUD extends HttpServlet {
         processRequest(request, response);
     }
 
-    /**
+    /** 
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override
