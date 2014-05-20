@@ -35,13 +35,13 @@ public class ShowServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ShowServlet</title>");            
+            out.println("<title>Servlet ShowServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ShowServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-        } finally {            
+        } finally {
             out.close();
         }
     }

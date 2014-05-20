@@ -10,6 +10,5 @@ import java.io.Serializable;
  *
  * @author Jessie
  */
-public class Route implements Serializable{
-    
+public class Route implements Serializable {
 }

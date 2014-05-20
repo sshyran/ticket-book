@@ -10,7 +10,8 @@ import java.io.Serializable;
  *
  * @author Jessie
  */
-public class Station implements Serializable{
+public class Station implements Serializable {
+
     private int id;
     private String sname;
     private String address;
@@ -54,11 +55,10 @@ public class Station implements Serializable{
         this.address = address;
         this.province = province;
     }
-    
+
     public Station(String sname, String address, String province) {
         this.sname = sname;
         this.address = address;
         this.province = province;
     }
-    
 }

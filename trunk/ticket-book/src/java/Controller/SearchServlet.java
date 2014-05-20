@@ -37,7 +37,7 @@ public class SearchServlet extends HttpServlet {
             request.setAttribute("trips", trips);
             request.setAttribute("depS", depStation);
             request.setAttribute("terS", terStation);
-        }else{
+        } else {
             request.setAttribute("check", "check");
         }
         String url = "afterSearching.jsp?txtDeparture=" + depatureS + "&txtTerminate=" + terminateS;
