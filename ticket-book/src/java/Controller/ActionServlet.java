@@ -7,10 +7,12 @@ package Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -45,14 +47,27 @@ public class ActionServlet extends HttpServlet {
             } else if (action.equals("Book ticket")) {
                 url = BookingServlet;
             } else if (action.equals("Manage Trip")) {
+                request.setAttribute("action", request.getParameter("action"));
+                request.setAttribute("id", request.getParameter("id"));
                 url = tripServlet;
-            }  else if (action.equals("Manage Route")) {
+            } else if (action.equals("Manage Route")) {
                 url = RouteCRUD;
             } else if (action.equals("Manage Station")) {
                 url = StationCRUD;
+            } else if (action.equals("Update Trip")) {
+                /*request.setAttribute("action", "confirmUpdate");
+                request.setAttribute("dTime", request.getParameter("dTime"));
+                request.setAttribute("tTime", request.getParameter("tTime"));
+                request.setAttribute("price", request.getParameter("price"));
+                request.setAttribute("tSeat", request.getParameter("tSeat"));
+                request.setAttribute("aSeat", request.getParameter("aSeat"));*/
+                url = tripServlet;
             }
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
+            System.out.println("e");
+        } catch (Exception e) {
+            System.out.println("f");
         } finally {
             out.close();
         }
