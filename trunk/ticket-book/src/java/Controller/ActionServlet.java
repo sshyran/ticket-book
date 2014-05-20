@@ -6,6 +6,7 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,32 +16,44 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jessie
  */
-public class ShowServlet extends HttpServlet {
+public class ActionServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private final String WelcomeServlet = "WelcomeServlet";
+    private final String SearchServlet = "SearchServlet";
+    private final String BookingServlet = "BookingServlet";
+    private final String LoginServlet = "LoginServlet";
+    private final String LogoutServlet = "LogoutServlet";
+    private final String tripServlet = "tripServlet";
+    private final String RouteCRUD = "RouteCRUD";
+    private final String StationCRUD = "StationCRUD";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String url = "";
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ShowServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ShowServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String action = request.getParameter("btAction");
+            if (action.equals("Login")) {
+                url = LoginServlet;
+            } else if (action.equals("Logout")) {
+                url = LogoutServlet;
+            } else if (action.equals("Search ticket")) {
+                url = SearchServlet;
+            } else if (action.equals("Home")) {
+                url = WelcomeServlet;
+            } else if (action.equals("Book ticket")) {
+                // xem lai, keu Phuong commit bai truoc
+                url = BookingServlet;
+            } else if (action.equals("Manage Trip")) {
+                url = tripServlet;
+            }  else if (action.equals("Manage Route")) {
+                url = RouteCRUD;
+            } else if (action.equals("Manage Station")) {
+                url = StationCRUD;
+            }
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         } finally {
             out.close();
         }

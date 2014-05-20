@@ -28,7 +28,7 @@
     </head>
 
     <body>
-        <h2 style="text-align: center">STATION</h2>
+        <h2 style="text-align: center">Station Management</h2>
         <hr>
         <h3 style="text-align: center; color: red;">${errors}</h3>
         <div id="wrapper">
@@ -37,15 +37,9 @@
             </div>
             <div class="col-lg-6">
                 <center>
-                    <form class="form-horizontal" role="form" method="post" action="StationCRUD">
+                    <form class="form-horizontal" role="form" method="post" action="ActionServlet">
                         <div class="form-group">
-                            <label for="ID" class="col-sm-2 control-label">ID</label>
-                            <div class="col-sm-10">
-                                <input type="text" readonly name="txtId" class="form-control" id="ID" placeholder="ID read only" value="${st.id}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="SName" class="col-sm-2 control-label">SName</label>
+                            <label for="SName" class="col-sm-2 control-label">Station</label>
                             <div class="col-sm-10">
                                 <input type="text" name="txtSName" class="form-control" id="SName" placeholder="Input SName" value="${st.sname}">
                             </div>
@@ -67,6 +61,7 @@
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-success" name="btnInsert" id="btnInsert">Insert</button>
                                 <button type="submit" class="btn btn-info" name="btnUpdate" id="btnUpdate">Update</button>
+                                <input type="hidden" name="btAction" value="Manage Station" />
                             </div>
                         </div>
                     </form>
@@ -75,9 +70,10 @@
 
                 <hr/>
                 <CENTER>
-                    <form action="StationCRUD" method="get" class="form-search">
+                    <form action="ActionServlet" method="get" class="form-search">
                         <input type="text" class="input-medium search-query" placeholder="Input To Search" name="txtSearch" value="${search}"/>
                         <button type="submit" class="btn btn-primary" name="btnSearch">Search</button>
+                        <input type="hidden" name="btAction" value="Manage Station" />
                     </form>
                 </CENTER>
                 <div class="row clearfix">

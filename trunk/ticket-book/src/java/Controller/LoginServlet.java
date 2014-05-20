@@ -40,8 +40,6 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         String uname = request.getParameter("txtUsername");
         String password = request.getParameter("txtPassword");
         // <editor-fold defaultstate="collapsed" desc="khai bean, tác giả Dương Nam Phương, sửa lại theo MVC">

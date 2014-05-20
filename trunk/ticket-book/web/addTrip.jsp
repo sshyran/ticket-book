@@ -55,7 +55,7 @@
                             <tr>
                                 <td align="right">Price: </td>
                                 <td>
-                                    <input type="text" name="price" class="input-block-level">
+                                    <input type="text" name="price" class="input-block-level"> (VNĐ)
                                 </td>
                             </tr>
                             <tr>

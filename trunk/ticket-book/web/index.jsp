@@ -50,6 +50,7 @@
                         <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
+                                <li><a title="contact" href="ActionServlet?btAction=Home">Home</a></li>
                                 <li><a href="loginPage.jsp">Admin login</a></li>
                             </ul>
                         </nav>
@@ -68,7 +69,7 @@
                 <div class="row">
                     <div class="span12">
                         <center>
-                            <form action="SearchServlet">
+                            <form action="ActionServlet">
                                 <table border="none">
                                     <tr>
                                         <td>
@@ -100,7 +101,9 @@
                                     </tr>
                                     <tr>
                                         <td></td>
-                                        <td><input type="submit" value="Search" name="btAction" /></td>
+                                        <td>
+                                            <input type="submit" value="Search"/></td>
+                                    <input type="hidden" value="Search ticket" name="btAction"/>
                                     </tr>
                                 </table>
                             </form>
