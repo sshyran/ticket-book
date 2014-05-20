@@ -99,50 +99,50 @@
             <div class="container">
                 <div class="row">
                     <div class="span12">
-                            <table class="table table-bordered table-hover tablesorter">
-                                <tr>
-                                    <th class="header">No.</th>
-                                    <th class="header">Trip</th>
-                                    <th class="header">Departure Station</th>
-                                    <th class="header">Terminate Station</th>
-                                    <th class="header">Departure time</th>
-                                    <th class="header">Termination time</th>
-                                    <th class="header">Available seat</th>
-                                    <th class="header">Price (VNĐ)</th>
-                                    <th class="header">Book ticket</th>
-                                </tr>
+                        <table class="table table-bordered table-hover tablesorter">
+                            <tr>
+                                <th class="header">No.</th>
+                                <th class="header">Trip</th>
+                                <th class="header">Departure Station</th>
+                                <th class="header">Terminate Station</th>
+                                <th class="header">Departure time</th>
+                                <th class="header">Termination time</th>
+                                <th class="header">Available seat</th>
+                                <th class="header">Price (VNĐ)</th>
+                                <th class="header">Book ticket</th>
+                            </tr>
 
-                                <c:if test="${requestScope.check eq 'check'}">
-                                    <tr>
-                                        <td colspan="9">
-                                            <h2>Sorry. No trip is available for your choose.</h2>
-                                        </td>
-                                    </tr>
-                                </c:if>
-                                <c:set var="depS" value="${requestScope.depS}" />
-                                <c:set var="terS" value="${requestScope.terS}" />
-                                <c:forEach var="trip" items="${requestScope.trips}" varStatus="counter">
-                                    <tr class="active">
-                                    <form action="BookingServlet">
-                                        <td>${counter.count}</td>
-                                        <td>${depS.province} - ${terS.province}</td>
-                                        <td>${depS.sname} - ${depS.address}</td>
-                                        <td>${terS.sname} - ${terS.address}</td>
-                                        <td>${trip.depTime}</td>
-                                        <td>${trip.terTime}</td>
-                                        <td>${trip.availableSeat}</td>
-                                        <td>${trip.price}</td>
-                                        <td>
-                                            
-                                            <input type="hidden" name="price" value="${trip.price}"/>
-                                            <input type="hidden" name="availableSeat" value="${trip.availableSeat}"/>
-                                            <input type="hidden" name="tripID" value="${trip.id}"/>
-                                            <input type="submit" value="Book" name="action" />
-                                        </td>
-                                    </form>
-                                    </tr>
-                                </c:forEach>
-                            </table>
+                            <c:if test="${requestScope.check eq 'check'}">
+                                <tr>
+                                    <td colspan="9">
+                                        <h2>Sorry. No trip is available for your choose.</h2>
+                                    </td>
+                                </tr>
+                            </c:if>
+                            <c:set var="depS" value="${requestScope.depS}" />
+                            <c:set var="terS" value="${requestScope.terS}" />
+                            <c:forEach var="trip" items="${requestScope.trips}" varStatus="counter">
+                                <tr class="active">
+                                <form action="BookingServlet">
+                                    <td>${counter.count}</td>
+                                    <td>${depS.province} - ${terS.province}</td>
+                                    <td>${depS.sname} - ${depS.address}</td>
+                                    <td>${terS.sname} - ${terS.address}</td>
+                                    <td>${trip.depTime}</td>
+                                    <td>${trip.terTime}</td>
+                                    <td>${trip.availableSeat}</td>
+                                    <td>${trip.price}</td>
+                                    <td>
+
+                                        <input type="hidden" name="price" value="${trip.price}"/>
+                                        <input type="hidden" name="availableSeat" value="${trip.availableSeat}"/>
+                                        <input type="hidden" name="tripID" value="${trip.id}"/>
+                                        <input type="submit" value="Book" name="action" />
+                                    </td>
+                                </form>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </div>
                 </div>
                 <div class="row">
