@@ -10,9 +10,14 @@ import java.util.Comparator;
  *
  * @author Jessie
  */
-public class ProvinceComparator implements Comparator {
+public class ProvinceComparator implements Comparator<Station> {
 
-    public int compare(Object t, Object t1) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int compare(Station s1, Station s2) {
+        String province1 = s1.getProvince().toUpperCase();
+        String province2 = s2.getProvince().toUpperCase();
+        //ascending order
+        return province1.compareTo(province2);
+        //descending order
+        //return fruitName2.compareTo(fruitName1);
     }
 }
