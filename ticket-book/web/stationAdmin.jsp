@@ -34,9 +34,9 @@
                     <a class="navbar-brand" href="admin.jsp">SB Admin</a>
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
-                   
+
                     <ul class="nav navbar-nav side-nav">
-                        
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Manage Trip <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -125,16 +125,16 @@
                             <thead>
                                 <tr>
                                     <th>
-							ID
+                                        ID
                                     </th>
                                     <th>
-							SName
+                                        SName
                                     </th>
                                     <th>
-							Address
+                                        Address
                                     </th>
                                     <th>
-							Province
+                                        Province
                                     </th>
                                     <th>
                                         &nbsp;
@@ -153,10 +153,10 @@
                                         <td>${s.address}</td>
                                         <td>${s.province}</td>
                                         <td><u><a href="?lnkEdit&txtId=${s.id}">Edit</a></u></td>
-                                        <td><u><a href="?lnkDelete&txtId=${s.id}">Delete</a></u></td>
-                                    </tr>
-                                </c:forEach>
+                                <td><u><a href="?lnkDelete&txtId=${s.id}">Delete</a></u></td>
                                 </tr>
+                            </c:forEach>
+                            </tr>
                             </tbody>
                         </table>
                     </div>

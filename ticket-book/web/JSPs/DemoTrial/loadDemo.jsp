@@ -28,23 +28,23 @@
             SELECT [id] ,[sname] ,[address] ,[province]  FROM [TripBooking].[dbo].[Station]
         </sql:query>
         <!--Present data-->
-        <center>
-            <table border="1">
-                <!--header-->
+    <center>
+        <table border="1">
+            <!--header-->
+            <tr>
+                <c:forEach var="colName" items="${stationList.columnNames}">
+                    <th><c:out value="${colName}" /></th>
+                </c:forEach>
+            </tr>
+            <!--rows-->
+            <c:forEach var="row" items="${stationList.rowsByIndex}">
                 <tr>
-                    <c:forEach var="colName" items="${stationList.columnNames}">
-                        <th><c:out value="${colName}" /></th>
+                    <c:forEach var="col" items="${row}">
+                        <td> <c:out value="${col}" /> </td>
                     </c:forEach>
                 </tr>
-                <!--rows-->
-                <c:forEach var="row" items="${stationList.rowsByIndex}">
-                    <tr>
-                        <c:forEach var="col" items="${row}">
-                            <td> <c:out value="${col}" /> </td>
-                        </c:forEach>
-                    </tr>
-                </c:forEach>
-            </table>
-        </center>
-    </body>
+            </c:forEach>
+        </table>
+    </center>
+</body>
 </html>

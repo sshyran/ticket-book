@@ -67,7 +67,7 @@
                     <div class="span12">
                         <center>
                             <script type="text/javascript" >
-                               function validateForm(){
+                                function validateForm(){
                        
                                     var username = document.getElementById("user").value;
                                     var password = document.getElementById("pass").value;

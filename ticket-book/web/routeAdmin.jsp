@@ -62,7 +62,7 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
-                       
+
                         <li class="dropdown user-dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${sessionScope.ADMIN.fullName} <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -95,7 +95,7 @@
                                     select * from [Station]
                                 </sql:query>
                                 <c:forEach var="row" items="${StationSNameList.rowsByIndex}">
-                                    
+
                                     <option value="${row[0]}">${row[1]}</option>
 
                                 </c:forEach>
@@ -110,7 +110,7 @@
                                         select * from [Station]
                                     </sql:query>
                                     <c:forEach var="row" items="${StationSNameList.rowsByIndex}">
-                                         <option value="${row[0]}">${row[1]}</option>
+                                        <option value="${row[0]}">${row[1]}</option>
                                     </c:forEach>
                                 </select>
                             </div>
@@ -138,16 +138,16 @@
                             <thead>
                                 <tr>
                                     <th>
-							ID
+                                        ID
                                     </th>
                                     <th>
-							Departure
+                                        Departure
                                     </th>
                                     <th>
-							Terminate
+                                        Terminate
                                     </th>
                                     <th>
-							Name
+                                        Name
                                     </th>
                                     <th>
                                         &nbsp;
