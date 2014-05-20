@@ -79,7 +79,7 @@
                             </c:forEach>
                         </tbody>
                     </table>
-                    <a href="addTrip.jsp" class="btn btn-primary">Add trip</a>
+                    <!--<a href="addTrip.jsp" class="btn btn-primary">Add trip</a>-->
                 </c:if>
             </div>
         </div>
