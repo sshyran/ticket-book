@@ -109,8 +109,8 @@
                                         <td>${s.sname}</td>
                                         <td>${s.address}</td>
                                         <td>${s.province}</td>
-                                        <td><u><a href="?lnkEdit&txtId=${s.id}">Edit</a></u></td>
-                                        <td><u><a href="?lnkDelete&txtId=${s.id}">Delete</a></u></td>
+                                        <td><u><a href="ActionServlet?btAction=Update Station&lnkEdit&txtId=${s.id}">Edit</a></u></td>
+                                        <td><u><a href="ActionServlet?btAction=Delete Station&lnkDelete&txtId=${s.id}">Delete</a></u></td>
                                     </tr>
                                 </c:forEach>
                                 </tr>

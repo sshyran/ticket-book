@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import DAL.Trip;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
 
@@ -46,5 +47,26 @@ public class TripBean {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public Trip getTrip(int id) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Trip trip = null;
+        try {
+            conn = DAO.makeConnection();
+            stmt = conn.prepareStatement("SELECT * from Trip where id=?");
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                int routeId = rs.getInt("routeId");
+                String depTime = rs.getString("departTime");
+                String terTime = rs.getString("terminTime");
+                trip = new Trip(routeId, depTime, terTime);
+            }
+        } catch (Exception e) {
+        }
+        return trip;
     }
 }
