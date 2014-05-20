@@ -49,6 +49,21 @@ public class TripBean {
         }
     }
 
+    public boolean addTrip(String dTime, String tTime, float price, int totalSeat, int availableSeat, int routeID) {
+        Connection c = DAO.makeConnection();
+        Statement stmt;
+        try {
+            stmt = c.createStatement();
+            String query = "insert into Trip(departTime,terminTime,price,totalSeats,availableSeat,routeId,isShow) values ("
+                    + "'" + dTime + "','" + tTime + "'," + price + ","
+                    + totalSeat + "," + availableSeat + "," + routeID + ",1);";
+            stmt.executeUpdate(query);
+            return true;
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
     public Trip getTrip(int id) {
         Connection conn = null;
         PreparedStatement stmt = null;
