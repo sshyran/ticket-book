@@ -28,6 +28,7 @@ public class SendEmail {
 
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
+                    @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(username, password);
                     }
@@ -38,7 +39,7 @@ public class SendEmail {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("from-email@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse("cusEmail"));
+                    InternetAddress.parse(cusEmail));
             message.setSubject("Booking Confirmation");
             message.setText("Dear Mail Crawler,"
                     + "\n\n No spam to my email, please!");
