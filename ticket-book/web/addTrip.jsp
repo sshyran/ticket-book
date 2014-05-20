@@ -71,7 +71,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">Route ID: </td>
+                                <td align="right">Route Name: </td>
                                 <td>
                                     <select class="selectpicker" name="routeId">
                                         <!--load các route name còn lại-->
@@ -81,10 +81,10 @@
                                         %>
                                         <sql:setDataSource var="sqlDS" url="<%=conStr2%>" driver="<%=driver2%>" />
                                         <sql:query dataSource="${sqlDS}" var="routeIdList">
-                                            select id from [Route]
+                                            select id,name from [Route]
                                         </sql:query>
                                         <c:forEach var="row" items="${routeIdList.rowsByIndex}">
-                                            <option>${row[0]}</option>
+                                            <option value="${row[0]}">${row[1]}</option>
                                         </c:forEach>
                                     </select>
                                 </td>
