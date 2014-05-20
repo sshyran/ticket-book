@@ -84,8 +84,17 @@ public class tripServlet extends HttpServlet {
                 // </editor-fold>
             }
             if (action.equals("add")) {
-
                 try {
+                    TripBean tb = new TripBean();
+                    String dTime = request.getParameter("dTime");
+                    String tTime = request.getParameter("tTime");
+                    float price = Float.parseFloat(request.getParameter("price"));
+                    int totalSeat = Integer.parseInt(request.getParameter("tSeat"));
+                    int availableSeat = Integer.parseInt(request.getParameter("aSeat"));
+                    int routeID = Integer.parseInt(request.getParameter("routeId"));
+                    tb.addTrip(dTime, tTime, price, totalSeat, availableSeat, routeID);
+                    // <editor-fold defaultstate="collapsed" desc="old">
+                /*try {
                     String newDTime = request.getParameter("dTime");
                     String newTTime = request.getParameter("tTime");
                     float newPrice = Float.parseFloat(request.getParameter("price"));
@@ -95,12 +104,18 @@ public class tripServlet extends HttpServlet {
                     cn = DriverManager.getConnection(new DAO().getConnectionString());
                     stmt = cn.createStatement();
                     query = "insert into Trip(departTime,terminTime,price,totalSeats,availableSeat,routeId,isShow) values ("
-                            + "'" + newDTime + "','" + newTTime + "'," + newPrice + ","
-                            + newTotalSeat + "," + newAvailableSeat + "," + newRouteID + ",1);";
+                    + "'" + newDTime + "','" + newTTime + "'," + newPrice + ","
+                    + newTotalSeat + "," + newAvailableSeat + "," + newRouteID + ",1);";
                     stmt.executeUpdate(query);
+                    } catch (Exception e) {
+                    }*/
+                    // </editor-fold>
+
                 } catch (Exception e) {
+                    
+                } finally {
+                    response.sendRedirect("CollectTrip");
                 }
-                response.sendRedirect("CollectTrip");
             }
         } finally {
             out.close();
