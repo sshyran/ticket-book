@@ -4,7 +4,7 @@
  */
 package Controller;
 
-import Util.JdbcUtil;
+import Bean.ManageRouteBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.SortedMap;
@@ -21,11 +21,8 @@ import javax.servlet.jsp.jstl.sql.Result;
  */
 public class RouteCRUD extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -52,23 +49,24 @@ public class RouteCRUD extends HttpServlet {
             if (request.getParameter("btnInsert") != null) {
 
                 String sql = "INSERT INTO Route (departure, terminate, isShow, name) VALUES(?, ?, ?, (select distinct s1.province + \' - \' + s2.province as name from [Route] r,[Station] s1,[Station] s2 where s1.id=? and s2.id=?))";
-                JdbcUtil.executeUpdate(sql, departure, terminate, isShow, departure, terminate);
+                ManageRouteBean.executeUpdate(sql, departure, terminate, isShow, departure,terminate);
                 request.setAttribute("errors", "Inserted successfully !");
-
+            
             } else if (request.getParameter("btnDelete") != null) {
                 String sql = "UPDATE Route SET isShow=? WHERE id=?";
                 /*
                  * Truy vấn và chia sẻ kết quả trong request
                  */
-                JdbcUtil.executeUpdate(sql, false, id);
+                ManageRouteBean.executeUpdate(sql, false, id);
                 request.setAttribute("errors", "Deleted successfully !");
 
-            } else if (request.getParameter("lnkDelete") != null) {
+            }
+            else if (request.getParameter("lnkDelete") != null) {
                 String sql = "UPDATE Route SET isShow=? WHERE id=?";
                 /*
                  * Truy vấn và chia sẻ kết quả trong request
                  */
-                JdbcUtil.executeUpdate(sql, false, id);
+                 ManageRouteBean.executeUpdate(sql, false, id);
                 request.setAttribute("errors", "Deleted successfully !");
             }
         } catch (Exception e) {
@@ -89,7 +87,7 @@ public class RouteCRUD extends HttpServlet {
          * Tìm kiếm theo tên và chia sẽ kết quả trong request
          */
         String searchSql = "SELECT * FROM Route  WHERE name LIKE ? AND isShow = '1'";
-        Result rsSearch = JdbcUtil.toResult(searchSql, "%" + search + "%");
+        Result rsSearch = ManageRouteBean.toResult(searchSql, "%" + search + "%");
         request.setAttribute("rts", rsSearch);
         /*
          * Chuyển tiếp sang trang routeAdmin.jsp
@@ -99,10 +97,8 @@ public class RouteCRUD extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP
-     * <code>GET</code> method.
-     *
+    /** 
+     * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -114,10 +110,8 @@ public class RouteCRUD extends HttpServlet {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP
-     * <code>POST</code> method.
-     *
+    /** 
+     * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -129,9 +123,8 @@ public class RouteCRUD extends HttpServlet {
         processRequest(request, response);
     }
 
-    /**
+    /** 
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override
