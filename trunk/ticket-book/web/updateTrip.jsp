@@ -87,7 +87,7 @@
                             <tr>
                                 <td align="right"></td>
                                 <td>
-                                    <input type="submit" value="Update" class="btn-primary btn">
+                                    <input type="submit" value="Update" class="btn-primary btn" name="action">
                                     <input type="hidden" value="Manage Trip" name="btAction"/>
                                 </td>
                             </tr>

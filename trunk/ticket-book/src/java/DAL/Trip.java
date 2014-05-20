@@ -5,7 +5,6 @@
 package DAL;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 /**
  *
@@ -136,6 +135,12 @@ public class Trip implements Serializable {
         this.price = price;
         this.totalSeat = totalSeat;
         this.availableSeat = availableSeat;
+        this.routeId = routeID;
+    }
+    
+    public Trip(int routeID, String depTime, String terTime) {
+        this.depTime = depTime;
+        this.terTime = terTime;
         this.routeId = routeID;
     }
 }
