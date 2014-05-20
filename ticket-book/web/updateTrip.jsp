@@ -27,7 +27,7 @@
             <div class="col-lg-6">
                 <h2>Update Trip</h2>
                 <!--<form name="updateTrip" method="POST" action="tripServlet" accept-charset="ISO-8859-1">-->
-                <form name="updateTrip" method="POST" action="tripServlet">
+                <form name="updateTrip" method="POST" action="ActionServlet">
                     <input type="hidden" name="action" value="confirmUpdate"/>
                     <table>
                         <tbody>
@@ -52,7 +52,7 @@
                             <tr>
                                 <td align="right">Price: </td>
                                 <td>
-                                    <input type="text" value="${requestScope.updateTrip.price}" name="price" class="input-block-level">
+                                    <input type="text" value="${requestScope.updateTrip.price}" name="price" class="input-block-level"> (VNĐ)
                                 </td>
                             </tr>
                             <tr>
@@ -72,8 +72,8 @@
                                 <td>
                                     <c:set var="current" value="${requestScope.updateTrip.routeId}"/>
                                     <%
-                                                String conStr2 = new DAO().getConnectionString();
-                                                String driver2 = new DAO().getDriverString();
+                                        String conStr2 = new DAO().getConnectionString();
+                                        String driver2 = new DAO().getDriverString();
                                     %>
                                     <sql:setDataSource var="sqlDS" url="<%=conStr2%>" driver="<%=driver2%>" />
                                     <sql:query dataSource="${sqlDS}" var="routeNameList">
@@ -88,6 +88,7 @@
                                 <td align="right"></td>
                                 <td>
                                     <input type="submit" value="Update" class="btn-primary btn">
+                                    <input type="hidden" value="Manage Trip" name="btAction"/>
                                 </td>
                             </tr>
                         </tbody>

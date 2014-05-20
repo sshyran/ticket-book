@@ -6,7 +6,6 @@ package Controller;
 
 import Bean.ManageRouteBean;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.SortedMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +20,11 @@ import javax.servlet.jsp.jstl.sql.Result;
  */
 public class StationCRUD extends HttpServlet {
 
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+    /**
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -46,7 +48,7 @@ public class StationCRUD extends HttpServlet {
          * ứng (btnInsert, btnUpdate, btnDelete, btnSelect, btnSearch)
          */
         try {
-            if ((request.getParameter("btnInsert") != null) /* && (request.getParameter("btnInsert") != "") */ ) {
+            if ((request.getParameter("btnInsert") != null) /* && (request.getParameter("btnInsert") != "") */) {
                 String sql = "INSERT INTO Station(sname, address, province) VALUES(?, ?, ?)";
                 ManageRouteBean.executeUpdate(sql, sname, address, province);
                 request.setAttribute("errors", "Inserted successfully !");
@@ -96,8 +98,10 @@ public class StationCRUD extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
+    /**
+     * Handles the HTTP
+     * <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -109,8 +113,10 @@ public class StationCRUD extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
-     * Handles the HTTP <code>POST</code> method.
+    /**
+     * Handles the HTTP
+     * <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -122,8 +128,9 @@ public class StationCRUD extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

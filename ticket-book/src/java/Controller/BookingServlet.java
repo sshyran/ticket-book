@@ -60,6 +60,7 @@ public class BookingServlet extends HttpServlet {
                 String email = request.getParameter("txtEmail");
                 String phone = request.getParameter("txtPhone");
                 float total = price * no;
+                boolean isPaid = false;
                 // insert DB
                 Connection conn = DAO.makeConnection();
                 PreparedStatement stmt = conn.prepareStatement("INSERT INTO Booking (tripId,name,email,phone,numTicket,total,method,isPaid) Values(?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
@@ -70,7 +71,12 @@ public class BookingServlet extends HttpServlet {
                 stmt.setInt(5, no);
                 stmt.setFloat(6, total);
                 stmt.setString(7, method);
-                stmt.setBoolean(8, false);
+                if (method.equals("CASH")) {
+                    stmt.setBoolean(8, isPaid);
+                } else {
+                    isPaid = true;
+                    stmt.setBoolean(8, isPaid);
+                }
                 stmt.execute();
 
                 ResultSet res = stmt.getGeneratedKeys();
@@ -114,7 +120,7 @@ public class BookingServlet extends HttpServlet {
                     request.setAttribute("email", email);
                     request.setAttribute("phone", phone);
                     request.setAttribute("orderID", orderID);
-
+                    request.setAttribute("isPaid", isPaid);
                     conn.close();
                     request.getRequestDispatcher("confirm.jsp").forward(request, response);
                 }

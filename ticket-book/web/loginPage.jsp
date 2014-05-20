@@ -48,6 +48,7 @@
                         <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
+                                <li><a title="contact" href="ActionServlet?btAction=Home">Home</a></li>
                                 <li><a title="contact" href="#contact">Admin login</a></li>
                             </ul>
                         </nav>
@@ -87,7 +88,7 @@
 
                                 }
                             </script>
-                            <form action="LoginServlet" onsubmit="return(validateForm());" method="Post">
+                            <form action="ActionServlet" onsubmit="return(validateForm());" method="Post">
                                 <table border="none">
                                     <tr>
                                         <td>
@@ -108,8 +109,7 @@
                                     </tr>
                                     <tr>
                                         <td></td>
-                                        <td><input type="submit" value="Login" /></td>
-                                    </tr>
+                                        <td><input type="submit" value="Login" name="btAction"/></td>                                    </tr>
                                 </table>
                             </form>
                         </center>

@@ -66,12 +66,12 @@
                                     <td><c:out value="${trip.departure}"/></td>
                                     <td><c:out value="${trip.terminate}"/></td>
                                     <td>
-                                        <a href="tripServlet?action=update&id=${trip.id}" class="btn btn-success">
+                                        <a href="ActionServlet?btAction=Update Trip&action=update&id=${trip.id}" class="btn btn-success">
                                             Update
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="tripServlet?action=delete&id=${trip.id}" class="btn btn-danger">
+                                        <a href="ActionServlet?btAction=Delete Trip&action=delete&id=${trip.id}" class="btn btn-danger">
                                             Delete
                                         </a>
                                     </td>

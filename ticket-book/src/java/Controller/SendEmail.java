@@ -15,10 +15,10 @@ import javax.activation.*;
  */
 public class SendEmail {
 
-    public static void main(String[] args) {
+    public void sendMailConfirm(String cusEmail) {
 
-        final String username = "thuha051093@gmail.com";
-        final String password = "01667999957";
+        final String username = "busticketbooker@gmail.com";
+        final String password = "group5SAD";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -38,8 +38,8 @@ public class SendEmail {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("from-email@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse("to-email@gmail.com"));
-            message.setSubject("Testing Subject");
+                    InternetAddress.parse("cusEmail"));
+            message.setSubject("Booking Confirmation");
             message.setText("Dear Mail Crawler,"
                     + "\n\n No spam to my email, please!");
 

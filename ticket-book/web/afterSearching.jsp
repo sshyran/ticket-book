@@ -51,7 +51,7 @@
                         <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
-                                <li><a title="contact" href="WelcomeServlet">Home</a></li>
+                                <li><a title="contact" href="ActionServlet?btAction=Home">Home</a></li>
                                 <li><a title="contact" href="#contact">Admin login</a></li>
                             </ul>
                         </nav>
@@ -67,7 +67,7 @@
         <!-- ******************** HeaderWrap ********************-->
         <div id="headerwrap">
             <div class="paddingSearch">
-                <form action="SearchServlet">
+                <form action="ActionServlet">
                     <ul class="inline">
                         <li>Departure :</li>
                         <li>
@@ -90,7 +90,8 @@
                             <input type="text" name="txtDate" placeholder="dd-mm-yyyy"/>
                         </li>
                         <li>
-                            <input type="submit" value="Search" name="btAction" />
+                            <input type="submit" value="Search"/>
+                            <input type="hidden" value="Search ticket" name="btAction"/>
                         </li>
                     </ul>
                 </form>
@@ -138,6 +139,7 @@
                                         <input type="hidden" name="availableSeat" value="${trip.availableSeat}"/>
                                         <input type="hidden" name="tripID" value="${trip.id}"/>
                                         <input type="submit" value="Book" name="action" />
+                                        <input type="hidden" value="Book ticket" name="btAction"/>
                                     </td>
                                 </form>
                                 </tr>

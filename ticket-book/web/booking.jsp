@@ -76,7 +76,7 @@
                         <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
-                                <li><a title="contact" href="WelcomeServlet">Home</a></li>
+                                <li><a title="contact" href="ActionServlet?btAction=Home">Home</a></li>
                                 <li><a title="contact" href="#contact">Admin login</a></li>
                             </ul>
                         </nav>
@@ -95,7 +95,7 @@
                 <div class="row">
                     <div class="span12">
                         <center id="center">
-                            <form action="BookingServlet">
+                            <form action="ActionServlet">
                                 <table border="0" style="background-color: grey">
                                     <tr>
                                         <td>
@@ -118,7 +118,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><h4>No of Ticket</h4></td>
+                                        <td><h4>Number of Ticket</h4></td>
                                         <td>
                                             <select name="NumOfTicket">
                                                 <c:forEach var="i" begin="1" end="${requestScope.count}" step="1">
@@ -128,7 +128,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><h4>Method</h4></td>
+                                        <td><h4>Payment method</h4></td>
                                         <td>
                                             <select name="Method">
                                                 <option value="CASH">Cash</option>
@@ -141,7 +141,8 @@
                                         <td>
                                             <input type="hidden" name="tripID" value="${requestScope.tripID}"/>
                                             <input type="hidden" name="price" value="${requestScope.price}"/>
-                                            <input type="submit" value="Booking" name="action" /></td>
+                                            <input type="submit" value="Booking" name="action"/></td>
+                                    <input type="hidden" value="Book ticket" name="btAction"/>
                                     </tr>
                                 </table>
                             </form>

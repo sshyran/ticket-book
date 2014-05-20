@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Homepage</title>
+        <title>Booking Information</title>
         <link href="front-end/css/bootstrap.css" rel="stylesheet">
         <link href="front-end/css/style.css" rel="stylesheet">
         <link href="front-end/css/fontello.css" type="text/css" rel="stylesheet"
@@ -50,6 +50,7 @@
                         <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
+                                <li><a title="contact" href="ActionServlet?btAction=Home">Home</a></li>
                                 <li><a title="contact" href="#contact">Admin login</a></li>
                             </ul>
                         </nav>
@@ -68,18 +69,26 @@
                 <div class="row">
                     <div class="span12">
                         <div style="background-color: orange">
-                            <h2>Thông tin đặt chỗ</h2>
+                            <h2>Booking Info</h2>
                         </div>
                         <div style="background-color: white;text-align: left;padding-left: 20px">
-                            <p>Tên KH : ${requestScope.name}</p>
+                            <p>Customer name : ${requestScope.name}</p>
                             <p>Email : ${requestScope.email}</p>
-                            <p>Số ĐT : ${requestScope.phone}</p>
-                            <p>Khởi hành : ${requestScope.routeStart.sname} (${requestScope.routeStart.address}) lúc ${requestScope.trip.depTime}</p>
-                            <p>Kết thúc : ${requestScope.routeEnd.sname} (${requestScope.routeEnd.address}) lúc ${requestScope.trip.terTime}</p>
-                            <p>Số vé : ${requestScope.numTicket}</p>
-                            <p>Thành tiền : ${requestScope.total}</p>
-                            <p>Mã đặt chỗ : ${requestScope.orderID}</p>
-                            <i>Xin vui lòng thanh toán 2 ngày trước ngày khởi hành </i>
+                            <p>Phone number : ${requestScope.phone}</p>
+                            <p>Departure : ${requestScope.routeStart.sname} (${requestScope.routeStart.address}) lúc ${requestScope.trip.depTime}</p>
+                            <p>Terminate : ${requestScope.routeEnd.sname} (${requestScope.routeEnd.address}) lúc ${requestScope.trip.terTime}</p>
+                            <p>Booked Ticket(s) : ${requestScope.numTicket}</p>
+                            <p>Total Price : ${requestScope.total} (VNĐ)</p> 
+                            <c:choose>
+                                <c:when test="${requestScope.isPaid}">
+                                    <i>Thank you!</i>
+                                </c:when>
+                                <c:otherwise>
+                                    <i>Please stop by our nearest station by 2 days to pay for your booking. Thank you!</i>
+                                </c:otherwise>
+                            </c:choose>
+
+
                         </div>
                     </div>
                 </div>

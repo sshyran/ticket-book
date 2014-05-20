@@ -33,7 +33,7 @@
     </head>
 
     <body>
-        <h2 style="text-align: center">ROUTE</h2>
+        <h2 style="text-align: center">Route Management</h2>
         <hr>
         <h3 style="text-align: center; color: red;">${errors}</h3>
         <div id="wrapper">
@@ -43,7 +43,7 @@
             </div>
             <div class="col-lg-6">
                 <CENTER>
-                    <form class="form-horizontal" id="frmRoute" name="frmRoute" method="post" action="RouteCRUD">
+                    <form class="form-horizontal" id="frmRoute" name="frmRoute" method="post" action="ActionServlet">
                         <div class="control-group">
                             <label class="control-label" for="inputDeparture">Departure</label>
                             <select class="selectpicker" name="txtDeparture">
@@ -62,7 +62,6 @@
 
                                 </c:forEach>
                             </select>
-
                             <div class="control-group">
                                 <label class="control-label" for="inputTerminate">Terminate</label>
                                 <select class="selectpicker" name="txtTerminate">
@@ -80,6 +79,7 @@
                                 <div class="controls">
 
                                     <button type="submit" class="btn btn-success" name="btnInsert" id="btnInsert">Insert</button>
+                                    <input type="hidden" name="btAction" value="Manage Route"/>
                                 </div>
                             </div>
                         </div>
@@ -89,9 +89,10 @@
                 <hr/>
                 <CENTER>
 
-                    <form action="RouteCRUD" method="get" class="form-search">
+                    <form action="ActionServlet" method="get" class="form-search">
                         <input type="text" class="input-medium search-query"  placeholder="Input To Search" name="txtSearch" value="${search}"/>
                         <input type="submit" class="btn btn-primary" name="btnSearch"  value="Search"/>
+                        <input type="hidden" name="btAction" value="Manage Route"/>
                     </form>
                 </CENTER>
                 <div class="row clearfix">

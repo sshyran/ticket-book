@@ -15,7 +15,7 @@ public class ManageRouteBean
      * Thông số kết nối SQL Server
      */
     public static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    public static String dburl = "jdbc:sqlserver://PHUONGDNSE61089\\SQLEXPRESS:53968;databaseName = TripBooking;";
+    public static String dburl = "jdbc:sqlserver://localhost;user=sa;password=123456;database=TripBooking";
     public static String user = "sa";
     public static String password = "123456";
 
