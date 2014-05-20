@@ -60,33 +60,33 @@ public class LoginServlet extends HttpServlet {
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="kiểm tra login không đúng mô hình MVC (BỎ)">
         /*try {
-        String uname = request.getParameter("txtUsername");
-        String password = request.getParameter("txtPassword");
-        Connection conn = DAO.makeConnection();
-        PreparedStatement prepare = conn.prepareStatement("Select * from AdminAccount where uname=? and upass=?");
-        prepare.setString(1, uname);
-        prepare.setString(2, password);
-        prepare.execute();
-        ResultSet rs = prepare.executeQuery();
-        String url = "loginPage.jsp";
-        if (rs.next()) {
-        AdminAccount admin = new AdminAccount();
-        admin.setUsername(rs.getString("uname"));
-        admin.setPassword(rs.getString("upass"));
-        admin.setFullName(rs.getString("name"));
-        HttpSession session = request.getSession();
-        session.setAttribute("ADMIN", admin);
-        url = "admin.jsp";
-        }
-        request.setAttribute("INVALID", "Invalid username and password! Please try again");
-        RequestDispatcher rd = request.getRequestDispatcher(url);
-        rd.forward(request, response);
+         String uname = request.getParameter("txtUsername");
+         String password = request.getParameter("txtPassword");
+         Connection conn = DAO.makeConnection();
+         PreparedStatement prepare = conn.prepareStatement("Select * from AdminAccount where uname=? and upass=?");
+         prepare.setString(1, uname);
+         prepare.setString(2, password);
+         prepare.execute();
+         ResultSet rs = prepare.executeQuery();
+         String url = "loginPage.jsp";
+         if (rs.next()) {
+         AdminAccount admin = new AdminAccount();
+         admin.setUsername(rs.getString("uname"));
+         admin.setPassword(rs.getString("upass"));
+         admin.setFullName(rs.getString("name"));
+         HttpSession session = request.getSession();
+         session.setAttribute("ADMIN", admin);
+         url = "admin.jsp";
+         }
+         request.setAttribute("INVALID", "Invalid username and password! Please try again");
+         RequestDispatcher rd = request.getRequestDispatcher(url);
+         rd.forward(request, response);
 
-        } catch (SQLException ex) {
-        Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-        out.close();
-        }*/
+         } catch (SQLException ex) {
+         Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+         } finally {
+         out.close();
+         }*/
         // </editor-fold>
     }
 

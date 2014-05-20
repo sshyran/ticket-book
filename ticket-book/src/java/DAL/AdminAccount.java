@@ -10,7 +10,8 @@ import java.io.Serializable;
  *
  * @author Jessie
  */
-public class AdminAccount implements Serializable{
+public class AdminAccount implements Serializable {
+
     private String username;
     private String password;
     private String fullName;
@@ -47,5 +48,4 @@ public class AdminAccount implements Serializable{
     public void setUsername(String username) {
         this.username = username;
     }
-
 }

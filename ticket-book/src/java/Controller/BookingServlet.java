@@ -83,7 +83,7 @@ public class BookingServlet extends HttpServlet {
                 stmt.setInt(2, id);
                 stmt.setInt(3, no);
                 stmt.execute();
-                
+
                 // trang confirm.jsp
                 stmt = conn.prepareStatement("SELECT * from Trip where id=?");
                 stmt.setInt(1, id);
@@ -92,18 +92,18 @@ public class BookingServlet extends HttpServlet {
                     int routeId = rs.getInt("routeId");
                     String depTime = rs.getString("departTime");
                     String terTime = rs.getString("terminTime");
-                    
+
                     Trip trip = new Trip();
                     trip.setRouteId(routeId);
                     trip.setDepTime(depTime);
                     trip.setTerTime(terTime);
                     trip.setPrice(price);
-                    
+
                     SearchBean bean = new SearchBean();
                     Station depStation = bean.searchStation(routeId, "departure");
                     Station terStation = bean.searchStation(routeId, "terminate");
-                    
-                    
+
+
                     request.setAttribute("trip", trip);
                     request.setAttribute("routeStart", depStation);
                     request.setAttribute("routeEnd", terStation);
@@ -114,7 +114,7 @@ public class BookingServlet extends HttpServlet {
                     request.setAttribute("email", email);
                     request.setAttribute("phone", phone);
                     request.setAttribute("orderID", orderID);
-                    
+
                     conn.close();
                     request.getRequestDispatcher("confirm.jsp").forward(request, response);
                 }

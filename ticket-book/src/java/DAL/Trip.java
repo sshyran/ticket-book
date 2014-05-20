@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author Jessie
  */
-public class Trip implements Serializable{
+public class Trip implements Serializable {
 
     private int id;
     private String depTime;
