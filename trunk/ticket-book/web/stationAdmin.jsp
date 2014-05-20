@@ -10,6 +10,9 @@
 <!DOCTYPE HTML>
 
 <html>
+    <c:if test="${sessionScope.ADMIN==null}">
+        <c:redirect url="errorPage.jsp"/>
+    </c:if>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="${pageContext.request.contextPath}/back-end/js/confirms/confirms.js"></script>
@@ -29,50 +32,8 @@
         <hr>
         <h3 style="text-align: center; color: red;">${errors}</h3>
         <div id="wrapper">
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div>
-                    <a class="navbar-brand" href="admin.jsp">SB Admin</a>
-                </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-
-                    <ul class="nav navbar-nav side-nav">
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Manage Trip <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Add trip</a></li>
-                                <li><a href="#">Another Item</a></li>
-                                <li><a href="#">Third Item</a></li>
-                                <li><a href="#">Last Item</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Manage Route <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="routeAdmin.jsp">Route</a></li>
-                                <li><a href="stationAdmin.jsp">Station</a></li>
-
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right navbar-user">
-                        <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${sessionScope.ADMIN.fullName} <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
-                                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-                                <li class="divider"></li>
-                                <li><a href="LogoutServlet"><i class="fa fa-power-off"></i> Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <%@include file="HTML/AdminNavigation.html" %>
             <div class="container">
-
             </div>
             <div class="col-lg-6">
                 <center>
@@ -104,8 +65,8 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn success" name="btnInsert" id="btnInsert">Insert</button>
-                                <button type="submit" class="btn warning" name="btnUpdate" id="btnUpdate">Update</button>
+                                <button type="submit" class="btn btn-success" name="btnInsert" id="btnInsert">Insert</button>
+                                <button type="submit" class="btn btn-info" name="btnUpdate" id="btnUpdate">Update</button>
                             </div>
                         </div>
                     </form>
@@ -116,7 +77,7 @@
                 <CENTER>
                     <form action="StationCRUD" method="get" class="form-search">
                         <input type="text" class="input-medium search-query" placeholder="Input To Search" name="txtSearch" value="${search}"/>
-                        <button type="submit" class="btn" name="btnSearch">Search</button>
+                        <button type="submit" class="btn btn-primary" name="btnSearch">Search</button>
                     </form>
                 </CENTER>
                 <div class="row clearfix">
@@ -125,16 +86,16 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        ID
+							ID
                                     </th>
                                     <th>
-                                        SName
+							SName
                                     </th>
                                     <th>
-                                        Address
+							Address
                                     </th>
                                     <th>
-                                        Province
+							Province
                                     </th>
                                     <th>
                                         &nbsp;
@@ -153,10 +114,10 @@
                                         <td>${s.address}</td>
                                         <td>${s.province}</td>
                                         <td><u><a href="?lnkEdit&txtId=${s.id}">Edit</a></u></td>
-                                <td><u><a href="?lnkDelete&txtId=${s.id}">Delete</a></u></td>
+                                        <td><u><a href="?lnkDelete&txtId=${s.id}">Delete</a></u></td>
+                                    </tr>
+                                </c:forEach>
                                 </tr>
-                            </c:forEach>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
