@@ -1,0 +1,1 @@
+This project is to build a web application in which Customer can book tickets, admin/staff can do their business (add, modify, delete) on management.
